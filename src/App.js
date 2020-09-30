@@ -13,7 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/contratos'>
+        <Route path='/contracts'>
           <Contratos />
         </Route>
         <Route path='/register'>

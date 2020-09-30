@@ -22,11 +22,13 @@ function RegisterContract() {
     const [dataInicio, setDataInicio] = useState('');
     const [dataFim, setDataFim] = useState('');
     const [vinicola, setVinicola] = useState('');
-    const [setError] = useState('');
-    const [setSuccess] = useState('');
+    // eslint-disable-next-line
+    const [error, setError] = useState('');
+    // eslint-disable-next-line
+    const [success, setSuccess] = useState('');
 
     const makeRegister = async () => {
-        await api.post('/contrato', {
+        await api.post('/contract', {
             contratante,
             cpf_cnpj,
             endereco,
