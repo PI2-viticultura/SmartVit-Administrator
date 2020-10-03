@@ -3,6 +3,6 @@ const retirarMask = (value) => {
         return null;
       } 
       return value.replace(/\D/g, "");
-}
+};
 
 export default retirarMask;

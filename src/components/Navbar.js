@@ -33,13 +33,13 @@ function Navbar() {
                                 <span>{item.title}</span>
                             </Link>
                         </li>
-                    )
+                    );
                 })}
              </ul>
          </nav>
         </IconContext.Provider>
        </>
-    );
+    )
 };
 
 export default Navbar;

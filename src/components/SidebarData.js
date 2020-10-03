@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 import * as VscIcons from "react-icons/vsc";
 import * as BiIcons from "react-icons/bi";
 import * as HiIcons from "react-icons/hi";
@@ -42,4 +42,4 @@ export const SidebarData = [
     },
 
 
-]
+];

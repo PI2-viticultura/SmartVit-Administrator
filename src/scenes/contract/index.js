@@ -8,14 +8,14 @@ function Contratos() {
     const history = useHistory();
     const pushToRegister = async () => {
         history.push("/register");
-    }
+    };
     const people = [
         {
             contrato: "Siques",
             contratante: "Eloa",
             data: "11-04-1658"
         }
-    ]
+    ];
     return (
         <div className="main">
             <Box className="box-contrato" bg="#FFFFFF" rounded="md" h="35.48125em">
@@ -43,6 +43,6 @@ function Contratos() {
             </Box >
         </div >
     );
-};
+}
 
-export default Contratos
+export default Contratos;

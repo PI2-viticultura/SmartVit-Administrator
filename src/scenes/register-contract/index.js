@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
     Box,
     Button,
@@ -9,9 +9,9 @@ import {
     Input,
 } from "@chakra-ui/core";
 
-import api from '../../services/api';
-import retirarMask from '../../utils/masks';
-import './style.css';
+import api from "../../services/api";
+import retirarMask from "../../utils/masks";
+import "./style.css";
 
 
 function RegisterContract() {
@@ -39,7 +39,7 @@ function RegisterContract() {
     const [vinicola_field, setVinicola_field] = useState("");
 
     const makeRegister = async () => {
-        await api.post('/contract', {
+        await api.post("/contract", {
             contratante,
             cpf_cnpj,
             endereco,
@@ -212,40 +212,40 @@ function RegisterContract() {
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field_contratante" isRequired>
                             <FormLabel htmlFor="contratante">Contratante</FormLabel>
-                            <Input isInvalid={contratante_field} name="contratante" placeholder="contratante" onChange={e => { handleValidationContrante(e) }} />
+                            <Input isInvalid={contratante_field} name="contratante" placeholder="contratante" onChange={(e) => { handleValidationContrante(e); }} />
                         </FormControl>
                         <FormControl className="cpf_cnpj" isRequired>
                             <FormLabel htmlFor="cpf_cnpj">CPF/CNPJ</FormLabel>
-                            <Input isInvalid={cpfCnpj_field} id="cpf_cnpj" placeholder="CPF/CNPJ" onChange={e => { handleValidationCpfCnpj(e) }} />
+                            <Input isInvalid={cpfCnpj_field} id="cpf_cnpj" placeholder="CPF/CNPJ" onChange={(e) => { handleValidationCpfCnpj(e); }} />
                         </FormControl>
                     </Grid>
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field-endereco" isRequired>
                             <FormLabel htmlFor="endereco">Endereço</FormLabel>
-                            <Input isInvalid={endereco_field} id="endereco" placeholder="Endereço" onChange={e => { handleValidationEndereco(e) }} />
+                            <Input isInvalid={endereco_field} id="endereco" placeholder="Endereço" onChange={(e) => { handleValidationEndereco(e); }} />
                         </FormControl>
                         <FormControl className="field-phone" isRequired>
                             <FormLabel htmlFor="telefone">Telefone</FormLabel>
-                            <Input isInvalid={telefone_field} id="telefone" type="tel" placeholder="Telefone" onChange={e => { handleValidationTelefone(e) }} />
+                            <Input isInvalid={telefone_field} id="telefone" type="tel" placeholder="Telefone" onChange={(e) => { handleValidationTelefone(e); }} />
                         </FormControl>
                     </Grid>
                     <FormControl isRequired>
                         <FormLabel htmlFor="status">Status</FormLabel>
-                        <Input isInvalid={status_field} id="status" placeholder="Status" onChange={e => { handleValidationStatus(e) }} />
+                        <Input isInvalid={status_field} id="status" placeholder="Status" onChange={(e) => { handleValidationStatus(e); }} />
                     </FormControl>
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field-dataInicio" isRequired>
                             <FormLabel htmlFor="dataInicio">Data Início</FormLabel>
-                            <Input isInvalid={dataInicio_field} id="dataInicio" placeholder="Data Início" onChange={e => { handleValidationDataInicio(e) }} />
+                            <Input isInvalid={dataInicio_field} id="dataInicio" placeholder="Data Início" onChange={(e) => { handleValidationDataInicio(e); }} />
                         </FormControl>
                         <FormControl className="field-dataFim" isRequired>
                             <FormLabel htmlFor="dataFim">Data Fim</FormLabel>
-                            <Input isInvalid={dataFim_field} id="dataFim" placeholder="Data Fim" onChange={e => { handleValidationDataFim(e) }} />
+                            <Input isInvalid={dataFim_field} id="dataFim" placeholder="Data Fim" onChange={(e) => { handleValidationDataFim(e); }} />
                         </FormControl>
                     </Grid>
                     <FormControl isRequired>
                         <FormLabel htmlFor="vinicola">Vinicola</FormLabel>
-                        <Input isInvalid={vinicola_field} id="vinicola" placeholder="Vinicola" onChange={e => { handleValidationVinicola(e) }} />
+                        <Input isInvalid={vinicola_field} id="vinicola" placeholder="Vinicola" onChange={(e) => { handleValidationVinicola(e); }} />
                     </FormControl>
                 </div>
                 <div className="button-box">
@@ -254,6 +254,6 @@ function RegisterContract() {
             </Box>
         </div>
     )
-}
+};
 
 export default RegisterContract
