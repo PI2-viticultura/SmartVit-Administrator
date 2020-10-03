@@ -11,32 +11,32 @@ import {
 
 import api from '../../services/api';
 import retirarMask from '../../utils/masks';
-import './style.css'
+import './style.css';
 
 
 function RegisterContract() {
-    const [contratante, setContratante] = useState('');
-    const [cpf_cnpj, setCnpjCpf] = useState('');
-    const [endereco, setEndereco] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [status, setStatus] = useState('');
-    const [dataInicio, setDataInicio] = useState('');
-    const [dataFim, setDataFim] = useState('');
-    const [vinicola, setVinicola] = useState('');
+    const [contratante, setContratante] = useState("");
+    const [cpf_cnpj, setCnpjCpf] = useState("");
+    const [endereco, setEndereco] = useState("");
+    const [telefone, setTelefone] = useState("");
+    const [status, setStatus] = useState("");
+    const [dataInicio, setDataInicio] = useState("");
+    const [dataFim, setDataFim] = useState("");
+    const [vinicola, setVinicola] = useState("");
     // eslint-disable-next-line
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
     // eslint-disable-next-line
-    const [success, setSuccess] = useState('');
+    const [success, setSuccess] = useState("");
 
 
-    const [contratante_field, setContratanteField] = useState('');
-    const [cpfCnpj_field, setCpfCnpj_field] = useState('');
-    const [endereco_field, setEndereco_field] = useState('');
-    const [telefone_field, setTelefone_field] = useState('');
-    const [status_field, setStatus_field] = useState('');
-    const [dataInicio_field, setDataInicio_field] = useState('');
-    const [dataFim_field, setDataFim_field] = useState('');
-    const [vinicola_field, setVinicola_field] = useState('');
+    const [contratante_field, setContratanteField] = useState("");
+    const [cpfCnpj_field, setCpfCnpj_field] = useState("");
+    const [endereco_field, setEndereco_field] = useState("");
+    const [telefone_field, setTelefone_field] = useState("");
+    const [status_field, setStatus_field] = useState("");
+    const [dataInicio_field, setDataInicio_field] = useState("");
+    const [dataFim_field, setDataFim_field] = useState("");
+    const [vinicola_field, setVinicola_field] = useState("");
 
     const makeRegister = async () => {
         await api.post('/contract', {
@@ -52,12 +52,12 @@ function RegisterContract() {
             {
                 "Content-Type": "application/json",
                 "X-Requested-With": "XMLHttpRequest"
-            }).then(res => {
-                setError('');
-                setSuccess('success');
-            }).catch(error => {
-                setError('error');
-                setSuccess('');
+            }).then((res) => {
+                setError("");
+                setSuccess("success");
+            }).catch((error) => {
+                setError("error");
+                setSuccess("");
             })
     }
 
@@ -66,7 +66,7 @@ function RegisterContract() {
         const { value } = event.target;
         let regexName = new RegExp(/^[a-z ,.'-]+$/i);
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setContratanteField(true);
             return
         }
@@ -90,7 +90,7 @@ function RegisterContract() {
         const { value } = event.target;
         let regex = new RegExp(/(^\d{3}\.\d{3}\.\d{3}-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$)|(^\d{14}$)|(^\d{11}$)/);
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setCpfCnpj_field(true);
             return
         }
@@ -108,7 +108,7 @@ function RegisterContract() {
         event.preventDefault();
         const { value } = event.target;
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setEndereco_field(true);
             return
         }
@@ -122,7 +122,7 @@ function RegisterContract() {
         const { value } = event.target;
         const regexPhone = new RegExp(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/)
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setTelefone_field(true);
             return
         }
@@ -140,7 +140,7 @@ function RegisterContract() {
         event.preventDefault();
         const { value } = event.target;
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setStatus_field(true);
             return
         }
@@ -154,7 +154,7 @@ function RegisterContract() {
         const { value } = event.target;
         let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setDataInicio_field(true);
             return
         }
@@ -173,7 +173,7 @@ function RegisterContract() {
         const { value } = event.target;
         let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setDataFim_field(true);
             return
         }
@@ -191,7 +191,7 @@ function RegisterContract() {
         event.preventDefault();
         const { value } = event.target;
 
-        if (value.trim() === '') {
+        if (value.trim() === "") {
             setVinicola_field(true);
             return
         }

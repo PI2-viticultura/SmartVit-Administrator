@@ -1,19 +1,19 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
+import React from "react";
+import { useHistory } from "react-router-dom";
 
 import { Box, Button, Input, Grid, Divider, Text } from "@chakra-ui/core";
-import './style.css'
+import "./style.css";
 
 function Contratos() {
     const history = useHistory();
     const pushToRegister = async () => {
-        history.push('/register');
+        history.push("/register");
     }
     const people = [
         {
-            contrato: 'Siques',
-            contratante: 'Eloa',
-            data: '11-04-1658'
+            contrato: "Siques",
+            contratante: "Eloa",
+            data: "11-04-1658"
         }
     ]
     return (
@@ -42,7 +42,7 @@ function Contratos() {
 
             </Box >
         </div >
-    )
-}
+    );
+};
 
 export default Contratos
