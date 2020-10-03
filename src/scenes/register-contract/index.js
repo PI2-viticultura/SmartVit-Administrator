@@ -58,8 +58,8 @@ function RegisterContract() {
             }).catch((error) => {
                 setError("error");
                 setSuccess("");
-            })
-    }
+            });
+    };
 
     const handleValidationContrante = (event) => {
         event.preventDefault();
@@ -68,20 +68,20 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setContratanteField(true);
-            return
+            return;
         }
 
         if (value.length < 10) {
             setContratanteField(true);
-            return
+            return;
         }
 
         if (!regexName.exec(value)) {
-            setContratanteField(true)
-            return
+            setContratanteField(true);
+            return;
         }
 
-        setContratanteField(false)
+        setContratanteField(false);
         setContratante(value);
     }
 
@@ -92,15 +92,15 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setCpfCnpj_field(true);
-            return
+            return;
         }
 
         if (!regex.exec(value)) {
-            setCpfCnpj_field(true)
-            return
+            setCpfCnpj_field(true);
+            return;
         }
 
-        setCpfCnpj_field(false)
+        setCpfCnpj_field(false);
         setCnpjCpf(retirarMask(value));
     }
 
@@ -110,21 +110,21 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setEndereco_field(true);
-            return
+            return;
         }
 
-        setEndereco_field(false)
+        setEndereco_field(false);
         setEndereco(value);
     }
 
     const handleValidationTelefone = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        const regexPhone = new RegExp(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/)
+        const regexPhone = new RegExp(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/);
 
         if (value.trim() === "") {
             setTelefone_field(true);
-            return
+            return;
         }
 
         if (!regexPhone.exec(value)) {
@@ -132,7 +132,7 @@ function RegisterContract() {
             return;
         }
 
-        setTelefone_field(false)
+        setTelefone_field(false);
         setTelefone(retirarMask(value));
     }
 
@@ -142,10 +142,10 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setStatus_field(true);
-            return
+            return;
         }
 
-        setStatus_field(false)
+        setStatus_field(false);
         setStatus(value);
     }
 
@@ -156,7 +156,7 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setDataInicio_field(true);
-            return
+            return;
         }
 
         if (!regexDate.exec(value)) {
@@ -164,7 +164,7 @@ function RegisterContract() {
             return;
         }
 
-        setDataInicio_field(false)
+        setDataInicio_field(false);
         setDataInicio(value);
     }
 
@@ -175,15 +175,15 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setDataFim_field(true);
-            return
+            return;
         }
 
         if (!regexDate.exec(value)) {
             setDataFim_field(true);
-            return
+            return;
         }
 
-        setDataFim_field(false)
+        setDataFim_field(false);
         setDataFim(value);
     }
 
@@ -193,7 +193,7 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setVinicola_field(true);
-            return
+            return;
         }
         
         setVinicola_field(false);
@@ -254,6 +254,6 @@ function RegisterContract() {
             </Box>
         </div>
     )
-};
+}
 
-export default RegisterContract
+export default RegisterContract;
