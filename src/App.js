@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 
+import Navbar from './components/Navbar';
 import './App.css';
 import Contratos from './scenes/contract/index';
 import RegisterContract from './scenes/register-contract/index';
@@ -12,6 +13,7 @@ import RegisterContract from './scenes/register-contract/index';
 function App() {
   return (
     <BrowserRouter>
+      <Navbar />
       <Switch>
         <Route path='/contracts'>
           <Contratos />

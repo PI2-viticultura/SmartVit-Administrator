@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/core";
 
 import api from '../../services/api';
+import retirarMask from '../../utils/masks';
 import './style.css'
 
 
@@ -26,6 +27,16 @@ function RegisterContract() {
     const [error, setError] = useState('');
     // eslint-disable-next-line
     const [success, setSuccess] = useState('');
+
+
+    const [contratante_field, setContratanteField] = useState('');
+    const [cpfCnpj_field, setCpfCnpj_field] = useState('');
+    const [endereco_field, setEndereco_field] = useState('');
+    const [telefone_field, setTelefone_field] = useState('');
+    const [status_field, setStatus_field] = useState('');
+    const [dataInicio_field, setDataInicio_field] = useState('');
+    const [dataFim_field, setDataFim_field] = useState('');
+    const [vinicola_field, setVinicola_field] = useState('');
 
     const makeRegister = async () => {
         await api.post('/contract', {
@@ -50,6 +61,145 @@ function RegisterContract() {
             })
     }
 
+    const handleValidationContrante = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+        let regexName = new RegExp(/^[a-z ,.'-]+$/i);
+
+        if (value.trim() === '') {
+            setContratanteField(true);
+            return
+        }
+
+        if (value.length < 10) {
+            setContratanteField(true);
+            return
+        }
+
+        if (!regexName.exec(value)) {
+            setContratanteField(true)
+            return
+        }
+
+        setContratanteField(false)
+        setContratante(value);
+    }
+
+    const handleValidationCpfCnpj = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+        let regex = new RegExp(/(^\d{3}\.\d{3}\.\d{3}-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$)|(^\d{14}$)|(^\d{11}$)/);
+
+        if (value.trim() === '') {
+            setCpfCnpj_field(true);
+            return
+        }
+
+        if (!regex.exec(value)) {
+            setCpfCnpj_field(true)
+            return
+        }
+
+        setCpfCnpj_field(false)
+        setCnpjCpf(retirarMask(value));
+    }
+
+    const handleValidationEndereco = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === '') {
+            setEndereco_field(true);
+            return
+        }
+
+        setEndereco_field(false)
+        setEndereco(value);
+    }
+
+    const handleValidationTelefone = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+        const regexPhone = new RegExp(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/)
+
+        if (value.trim() === '') {
+            setTelefone_field(true);
+            return
+        }
+
+        if (!regexPhone.exec(value)) {
+            setTelefone_field(true);
+            return;
+        }
+
+        setTelefone_field(false)
+        setTelefone(retirarMask(value));
+    }
+
+    const handleValidationStatus = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === '') {
+            setStatus_field(true);
+            return
+        }
+
+        setStatus_field(false)
+        setStatus(value);
+    }
+
+    const handleValidationDataInicio = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+        let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
+
+        if (value.trim() === '') {
+            setDataInicio_field(true);
+            return
+        }
+
+        if (!regexDate.exec(value)) {
+            setDataInicio_field(true);
+            return;
+        }
+
+        setDataInicio_field(false)
+        setDataInicio(value);
+    }
+
+    const handleValidationDataFim = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+        let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
+
+        if (value.trim() === '') {
+            setDataFim_field(true);
+            return
+        }
+
+        if (!regexDate.exec(value)) {
+            setDataFim_field(true);
+            return
+        }
+
+        setDataFim_field(false)
+        setDataFim(value);
+    }
+
+    const handleValidationVinicola = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === '') {
+            setVinicola_field(true);
+            return
+        }
+        
+        setVinicola_field(false);
+        setVinicola(value);
+    }
+
     return (
         <div className="main">
             <Box className="box-contrato" bg="#FFFFFF" rounded="md">
@@ -60,46 +210,46 @@ function RegisterContract() {
                 </div>
                 <div>
                     <Grid templateColumns="repeat(2, 1fr)">
-                        <FormControl isRequired>
+                        <FormControl className="field_contratante" isRequired>
                             <FormLabel htmlFor="contratante">Contratante</FormLabel>
-                            <Input id="contratante" placeholder="contratante" onChange={e => { setContratante(e.target.value) }}  />
+                            <Input isInvalid={contratante_field} name="contratante" placeholder="contratante" onChange={e => { handleValidationContrante(e) }} />
                         </FormControl>
                         <FormControl className="cpf_cnpj" isRequired>
                             <FormLabel htmlFor="cpf_cnpj">CPF/CNPJ</FormLabel>
-                            <Input id="cpf_cnpj" placeholder="CPF/CNPJ" onChange={e => { setCnpjCpf(e.target.value) }} />
+                            <Input isInvalid={cpfCnpj_field} id="cpf_cnpj" placeholder="CPF/CNPJ" onChange={e => { handleValidationCpfCnpj(e) }} />
                         </FormControl>
                     </Grid>
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field-endereco" isRequired>
                             <FormLabel htmlFor="endereco">Endereço</FormLabel>
-                            <Input id="endereco" placeholder="Endereço" onChange={e => { setEndereco(e.target.value) }} />
+                            <Input isInvalid={endereco_field} id="endereco" placeholder="Endereço" onChange={e => { handleValidationEndereco(e) }} />
                         </FormControl>
                         <FormControl className="field-phone" isRequired>
                             <FormLabel htmlFor="telefone">Telefone</FormLabel>
-                            <Input id="telefone" type="tel" placeholder="Telefone" onChange={e => { setTelefone(e.target.value) }} />
+                            <Input isInvalid={telefone_field} id="telefone" type="tel" placeholder="Telefone" onChange={e => { handleValidationTelefone(e) }} />
                         </FormControl>
                     </Grid>
                     <FormControl isRequired>
                         <FormLabel htmlFor="status">Status</FormLabel>
-                        <Input id="status" placeholder="Status" onChange={e => { setStatus(e.target.value) }} />
+                        <Input isInvalid={status_field} id="status" placeholder="Status" onChange={e => { handleValidationStatus(e) }} />
                     </FormControl>
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field-dataInicio" isRequired>
                             <FormLabel htmlFor="dataInicio">Data Início</FormLabel>
-                            <Input id="dataInicio" placeholder="Data Início" onChange={e => { setDataInicio(e.target.value) }} />
+                            <Input isInvalid={dataInicio_field} id="dataInicio" placeholder="Data Início" onChange={e => { handleValidationDataInicio(e) }} />
                         </FormControl>
                         <FormControl className="field-dataFim" isRequired>
                             <FormLabel htmlFor="dataFim">Data Fim</FormLabel>
-                            <Input id="dataFim" placeholder="Data Fim" onChange={e => { setDataFim(e.target.value) }} />
+                            <Input isInvalid={dataFim_field} id="dataFim" placeholder="Data Fim" onChange={e => { handleValidationDataFim(e) }} />
                         </FormControl>
                     </Grid>
                     <FormControl isRequired>
                         <FormLabel htmlFor="vinicola">Vinicola</FormLabel>
-                        <Input id="vinicola" placeholder="Vinicola" onChange={e => { setVinicola(e.target.value) }} />
+                        <Input isInvalid={vinicola_field} id="vinicola" placeholder="Vinicola" onChange={e => { handleValidationVinicola(e) }} />
                     </FormControl>
                 </div>
                 <div className="button-box">
-                    <Button variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
+                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
                 </div>
             </Box>
         </div>
