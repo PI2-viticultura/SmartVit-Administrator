@@ -219,7 +219,7 @@ function RegisterContract() {
 
     return(
         <div className="main">
-            {success === 'success' ?
+            {success === "success" ?
                 <Alert status="success" variant="solid">
                     <AlertIcon />
                     Parabéns! Seu cadastro foi realizado com sucesso!
