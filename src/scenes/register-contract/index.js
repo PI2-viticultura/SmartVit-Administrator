@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import {
+    Alert,
+    AlertIcon,
     Box,
     Button,
     FormControl,
@@ -68,16 +70,19 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setContratanteField(true);
+            setContratante(null);
             return;
         }
 
         if (value.length < 10) {
             setContratanteField(true);
+            setContratante(null);
             return;
         }
 
         if (!regexName.exec(value)) {
             setContratanteField(true);
+            setContratante(null);
             return;
         }
 
@@ -92,11 +97,13 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setCpfCnpj_field(true);
+            setCnpjCpf(null);
             return;
         }
 
         if (!regex.exec(value)) {
             setCpfCnpj_field(true);
+            setCnpjCpf(null);
             return;
         }
 
@@ -110,6 +117,7 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setEndereco_field(true);
+            setEndereco(null);
             return;
         }
 
@@ -124,11 +132,13 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setTelefone_field(true);
+            setTelefone(null);
             return;
         }
 
         if (!regexPhone.exec(value)) {
             setTelefone_field(true);
+            setTelefone(null);
             return;
         }
 
@@ -142,6 +152,7 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setStatus_field(true);
+            setStatus(null);
             return;
         }
 
@@ -156,11 +167,13 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setDataInicio_field(true);
+            setDataInicio(null);
             return;
         }
 
         if (!regexDate.exec(value)) {
             setDataInicio_field(true);
+            setDataInicio(null);
             return;
         }
 
@@ -175,11 +188,13 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setDataFim_field(true);
+            setDataFim(null);
             return;
         }
 
         if (!regexDate.exec(value)) {
             setDataFim_field(true);
+            setDataFim(null);
             return;
         }
 
@@ -193,15 +208,22 @@ function RegisterContract() {
 
         if (value.trim() === "") {
             setVinicola_field(true);
+            setVinicola(null);
             return;
         }
-        
+
         setVinicola_field(false);
         setVinicola(value);
     }
 
-    return (
+
+    return(
         <div className="main">
+            {success === 'success' ?
+                <Alert status="success" variant="solid">
+                    <AlertIcon />
+                    Parabéns! Seu cadastro foi realizado com sucesso!
+                </Alert> : null }
             <Box className="box-contrato" bg="#FFFFFF" rounded="md">
                 <div className="title-box">
                     <Heading as="h3" size="md">
