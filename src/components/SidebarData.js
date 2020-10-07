@@ -2,6 +2,7 @@ import React from "react";
 import * as VscIcons from "react-icons/vsc";
 import * as BiIcons from "react-icons/bi";
 import * as HiIcons from "react-icons/hi";
+import * as GiIcons from "react-icons/gi"
 
 export const SidebarData = [
     {
@@ -9,6 +10,12 @@ export const SidebarData = [
         path: "/",
         icon: <HiIcons.HiDocumentReport />,
         cName: "nav-text"
+    },
+    {
+        title: ' Vinícola',
+        path: '/winery',
+        icon: <GiIcons.GiGrapes />,
+        cName: 'nav-text'
     },
     {
         title: " Contratos",
