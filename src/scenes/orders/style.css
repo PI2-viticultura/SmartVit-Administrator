@@ -1,29 +1,29 @@
-.orders{
-    text-align: center;
-    margin-left: 150px;
-    margin-right: 150px;
+.orders {
+        text-align: center;
+        margin-left: 150px;
+        margin-right: 150px;
 }
 
-.title{
-    font-size: 24px;
+.title {
+        font-size: 24px;
 }
 
 .nao-atendido{
-    color: red;
-    font-size: 20px;
+        color: red;
+        font-size: 20px;
 }
 
-button{
-    outline:none;
+button {
+        outline: none;
 }
 
-.atendido{
-    color: green;
-    font-size: 20px;
+.atendido {
+        color: green;
+        font-size: 20px;
 }
 
-.div-title{
-    margin-top: 20px;
-    margin-bottom: 20px;
-    text-align: center;
+.div-title {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
 }
