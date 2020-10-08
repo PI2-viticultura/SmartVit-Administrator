@@ -45,8 +45,7 @@
     border: 0;
     background-color: #591b2b;
     color: #fff;
-    width: 30%;
-    height: 2.409375em;
+    padding: 10px;
   }
   
   input {
