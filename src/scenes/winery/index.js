@@ -14,7 +14,7 @@ function Winery(){
     const [success, setSuccess] = useState("");
 
     const makeRequest = async () => {
-        await api.post('/winery', {
+        await api.post("/winery", {
             name,
             address,
             contractId
@@ -52,19 +52,19 @@ function Winery(){
                 <div className="labelContainer">
                     <p className="labelText">Nome:</p>
                 </div>
-                    <input type="text" maxLength='50' value={name} onChange={(e) => {setName(e.target.value)}}></input>
+                    <input type="text" maxLength='50' value={name} onChange={(e) => {setName(e.target.value);}}></input>
             </div>
             <div className="inputAddress">
                 <div className="labelContainer">
                     <p className="labelText">Endereço:</p>
                 </div>
-                    <input type="text" maxLength='200' value={address} onChange={(e) => {setAddress(e.target.value)}}></input>
+                    <input type="text" maxLength='200' value={address} onChange={(e) => {setAddress(e.target.value);}}></input>
             </div>
             <div className="inputId">
                 <div className="labelContainer">
                     <p className="labelText">ID do Contrato:</p>
                 </div>
-                    <input type="text" maxLength='24' value={contractId} onChange={(e) => {setContractId(e.target.value)}}></input>
+                    <input type="text" maxLength='24' value={contractId} onChange={(e) => {setContractId(e.target.value);}}></input>
             </div>
             <div className="buttonArea">
                 <button className="buttonCadastrarVinicola" onClick={() => makeRequest()}>CADASTRAR VINÍCOLA</button>
