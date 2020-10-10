@@ -28,6 +28,7 @@ function RegisterUser() {
     const [password, setPassword] = useState("");
     const [type, setType] = useState("");
     const [situation, setSituation] = useState("");
+    // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 

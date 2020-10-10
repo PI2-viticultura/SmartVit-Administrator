@@ -12,7 +12,9 @@ import { Scrollbars } from 'react-custom-scrollbars';
 function Users() {
     const history = useHistory();
     const [users, setUsers] = useState([]);
+    // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState("");
+    // eslint-disable-next-line no-unused-vars
     const [success, setSuccess] = useState("");
 
     useEffect(() => {
