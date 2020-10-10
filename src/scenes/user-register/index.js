@@ -67,11 +67,11 @@ function RegisterUser() {
 
         setNamefield(false);
         setName(value);
-    }
+    };
     const handleValidationCpf = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        const regexCpf = new RegExp(/(^\d{3}\.\d{3}\.\d{3}-\d{2}$)|(^\d{11}$)/)
+        const regexCpf = new RegExp(/(^\d{3}\.\d{3}\.\d{3}-\d{2}$)|(^\d{11}$)/);
 
         if (value.trim() === "") {
             setCpfField(true);
@@ -86,7 +86,7 @@ function RegisterUser() {
         }
 
         setCpfField(false);
-        setCpf(retirarMask(value))
+        setCpf(retirarMask(value));
     }
     const handleValidationEmail = (event) => {
         event.preventDefault();
@@ -111,7 +111,7 @@ function RegisterUser() {
     const handleValidationPassword = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        const regexPassword = new RegExp(/^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/)
+        const regexPassword = new RegExp(/^(?:(?=.*[a-z])(?:(?=.*[A-Z])(?=.*[\d\W])|(?=.*\W)(?=.*\d))|(?=.*\W)(?=.*[A-Z])(?=.*\d)).{8,}$/);
 
         if (value.trim() === "") {
             setPasswordField(true);

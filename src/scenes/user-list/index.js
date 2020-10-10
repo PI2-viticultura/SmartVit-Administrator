@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { Box, Button, Input, Grid, Divider, Text } from "@chakra-ui/core";
 import "./style.css";
 import api from "../../services/api";
-import { Scrollbars } from 'react-custom-scrollbars';
+import { Scrollbars } from "react-custom-scrollbars";
 
 
 
@@ -16,13 +16,6 @@ function Users() {
     const [error, setError] = useState("");
     // eslint-disable-next-line no-unused-vars
     const [success, setSuccess] = useState("");
-
-    useEffect(() => {
-        if (users.length === 0) {
-            makeGetUser();
-        }
-        return;
-    });
 
     const makeGetUser = async () => {
         await api.get("/user",
@@ -37,7 +30,14 @@ function Users() {
                 setError("error");
                 return error;
             });
-    }
+    };
+
+    useEffect(() => {
+        if (users.length === 0) {
+            makeGetUser();
+        }
+        return;
+    });
 
     const pushToRegister = () => {
         history.push({
