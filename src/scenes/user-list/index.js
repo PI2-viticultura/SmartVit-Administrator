@@ -45,10 +45,10 @@ function Users() {
         });
     }
 
-    const pushToEdit = (email) => {
+    const pushToEdit = (id) => {
         history.push({
-            pathname: "/user-register",
-            state: { isEdit: true, findBy: email }
+            pathname: "/user-edit",
+            state: { isEdit: true, userId: id }
         });
     }
 
@@ -78,7 +78,7 @@ function Users() {
                                 <Text fontSize="1em" color="gray">40028922</Text>
                                 <Text fontSize="1em" color="gray">Fix after</Text>
                                 <Grid templateColumns="repeat(2, 1fr)">
-                                    <Button className="btn-edit" onClick={() => pushToEdit(user.email)}>Editar</Button>
+                                    <Button className="btn-edit" onClick={() => pushToEdit(users[0]._id.$oid)}>Editar</Button>
                                     <Button className="btn-del">Deletar</Button>
                                 </Grid>
                             </Grid>

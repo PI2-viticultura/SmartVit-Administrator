@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import {
     Alert,
@@ -20,7 +21,7 @@ import "./style.css";
 
 
 
-function RegisterUser() {
+function EditUser() {
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
     const [email, setEmail] = useState("");
@@ -38,8 +39,18 @@ function RegisterUser() {
     const [typeField, setTypeField] = useState("");
     const [situationField, setSituationField] = useState("");
 
+    const [userId, setId] = useState(String);
+
     const [show, setShow] = React.useState(false);
     const handleClick = () => setShow(!show);
+
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.state.isEdit) {
+            setId(location.state.userId)
+        }
+    }, [location]);
 
 
     const handleValidationName = (event) => {
@@ -155,8 +166,12 @@ function RegisterUser() {
         setSituation(value);
     }
 
-    const makeRegister = async () => {
-        await api.post("/user", {
+    const makeEdit = async () => {
+        if (userId === null || userId === undefined) {
+            setSuccess(null);
+            return;
+        }
+        await api.put("/user/" + userId, {
             name,
             cpf,
             email,
@@ -170,6 +185,8 @@ function RegisterUser() {
             }).then((res) => {
                 setError("");
                 setSuccess("success");
+                setId(null);
+                location.state = null;
             }).catch((error) => {
                 setError("error");
                 setSuccess("");
@@ -181,12 +198,18 @@ function RegisterUser() {
             {success === "success" ?
                 <Alert status="success" variant="solid">
                     <AlertIcon />
-                    Parabéns! Seu cadastro foi realizado com sucesso!
+                    Parabéns! Você alterou o usuário com sucesso!
+                </Alert> : null}
+            {
+                error === "error" ?
+                    <Alert status="error" variant="solid">
+                        <AlertIcon />
+                    Ops! Ocorreu algum erro :(
                 </Alert> : null}
             <Box className="box-user" bg="#FFFFFF" rounded="md">
                 <div className="title-box">
                     <Heading as="h3" size="md">
-                        Cadastrar Usuário
+                        Editar Usuário
                     </Heading>
                 </div>
                 <div>
@@ -226,7 +249,7 @@ function RegisterUser() {
                     </FormControl>
                 </div>
                 <div className="button-box">
-                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
+                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeEdit()}>Atualizar</Button>
                 </div>
             </Box>
         </div >
@@ -234,4 +257,4 @@ function RegisterUser() {
 }
 
 
-export default RegisterUser;
+export default EditUser;

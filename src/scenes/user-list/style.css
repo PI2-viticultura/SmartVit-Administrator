@@ -1,54 +1,52 @@
 .main {
-    position: absolut;
-    top: 30em;
-    left: 50%;
-    width: 70%;
-    transform: translate(-50%, -50%);
-  
-    border-radius: 5px;
-    box-shadow: 1px 2px 1px 1px #c4c4c4;
-  }
-  
-  
-  .input-newUser {
-    left: 34%;
-  }
-  
-  .box-user {
-    padding: 5%;
-    height: auto;
-  }
-  
-  .column-name {
-    margin-top: 5%;
-    padding-left: 5%;
-    padding-right: 5%;
-    text-align: center;
-  }
+  position: absolut;
+  top: 30em;
+  left: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%);
 
-  .column-name-item {
-    margin-top: 1%;
-    text-align: center;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
-  
-  .column-atrib {
-    padding-left: 5%;
-    padding-right: 5%;
-    text-align: center;
-  }
+  border-radius: 5px;
+  box-shadow: 1px 2px 1px 1px #c4c4c4;
+}
 
-  .btn-edit {
-    margin-right: 2%;
-  }
+.input-newUser {
+  left: 34%;
+}
 
-  .btn-del {
-    margin-left: 2%;
-  }
+.box-user {
+  padding: 5%;
+  height: auto;
+}
 
-  .email {
-    width: 7.5em;
-    overflow-wrap: break-word;
-  }
-  
+.column-name {
+  margin-top: 5%;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+}
+
+.column-name-item {
+  margin-top: 1%;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.column-atrib {
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+}
+
+.btn-edit {
+  margin-right: 2%;
+}
+
+.btn-del {
+  margin-left: 2%;
+}
+
+.email {
+  width: 7.5em;
+  overflow-wrap: break-word;
+}
