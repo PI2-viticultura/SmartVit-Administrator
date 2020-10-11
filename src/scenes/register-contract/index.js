@@ -42,14 +42,14 @@ function RegisterContract() {
 
     const makeRegister = async () => {
         await api.post("/contract", {
-            contratante,
+            contractor: contratante,
             cpf_cnpj,
-            endereco,
-            telefone,
+            address: endereco,
+            phoneNumber: telefone,
             status,
-            dataInicio,
-            dataFim,
-            vinicola
+            initialDate: dataInicio,
+            endDate: dataFim,
+            winery: vinicola
         },
             {
                 "Content-Type": "application/json",
@@ -219,11 +219,18 @@ function RegisterContract() {
 
     return(
         <div className="main">
-            {success === "success" ?
+            {success === "success" &&
                 <Alert status="success" variant="solid">
                     <AlertIcon />
                     Parabéns! Seu cadastro foi realizado com sucesso!
-                </Alert> : null }
+                </Alert>
+            }
+            {error === "error" &&
+                <Alert status="error" variant="solid">
+                    <AlertIcon />
+                    Erro ao cadastrar
+                </Alert>
+            }
             <Box className="box-contrato" bg="#FFFFFF" rounded="md">
                 <div className="title-box">
                     <Heading as="h3" size="md">
