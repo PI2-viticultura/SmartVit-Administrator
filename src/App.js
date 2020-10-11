@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Contratos from "./scenes/contract/index";
 import RegisterContract from "./scenes/register-contract/index";
+import ListWinerys from "./scenes/list-winery/index"
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route path="/register">
           <RegisterContract />
+        </Route>
+        <Route path="/winerys">
+          <ListWinerys />
         </Route>
       </Switch>
     </BrowserRouter>
