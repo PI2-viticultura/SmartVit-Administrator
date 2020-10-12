@@ -11,6 +11,7 @@ import Contratos from "./scenes/contract/index";
 import RegisterContract from "./scenes/register-contract/index";
 import ListWinerys from "./scenes/list-winery/index";
 import Winery from "./scenes/winery/index";
+import ListOrders from "./scenes/orders/index";
 import Users from "./scenes/user-list/index";
 import RegisterUser from "./scenes/user-register/index";
 import EditUser from "./scenes/user-edit/index";
@@ -28,6 +29,9 @@ function App() {
         </Route>
         <Route path="/winerys">
           <ListWinerys />
+        </Route>
+        <Route path="/orders">
+          <ListOrders/>
         </Route>
         <Route path="/winery">
           <Winery />
