@@ -1,6 +1,6 @@
 .main {
-  position: fixed;
-  top: 50%;
+  position: absolut;
+  top: 30em;
   left: 50%;
   width: 70%;
   transform: translate(-50%, -50%);
@@ -9,12 +9,13 @@
   box-shadow: 1px 2px 1px 1px #c4c4c4;
 }
 
-.input-newContract {
+.input-newUser {
   left: 34%;
 }
 
-.box-contrato {
+.box-user {
   padding: 5%;
+  height: auto;
 }
 
 .column-name {
@@ -24,8 +25,28 @@
   text-align: center;
 }
 
+.column-name-item {
+  margin-top: 1%;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
 .column-atrib {
   padding-left: 5%;
   padding-right: 5%;
   text-align: center;
+}
+
+.btn-edit {
+  margin-right: 2%;
+}
+
+.btn-del {
+  margin-left: 2%;
+}
+
+.email {
+  width: 7.5em;
+  overflow-wrap: break-word;
 }

@@ -11,6 +11,10 @@ import Contratos from "./scenes/contract/index";
 import RegisterContract from "./scenes/register-contract/index";
 import ListWinerys from "./scenes/list-winery/index";
 import Winery from "./scenes/winery/index";
+import RegisterContract from "./scenes/register-contract/index";
+import Users from "./scenes/user-list/index";
+import RegisterUser from "./scenes/user-register/index";
+import EditUser from "./scenes/user-edit/index";
 
 function App() {
   return (
@@ -28,6 +32,15 @@ function App() {
         </Route>
         <Route path="/winery">
           <Winery />
+        </Route>
+        <Route path="/user">
+          <Users />
+        </Route>
+        <Route path="/user-register">
+          <RegisterUser />
+        </Route>
+        <Route path="/user-edit">
+          <EditUser />
         </Route>
       </Switch>
     </BrowserRouter>
