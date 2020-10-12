@@ -1,3 +1,7 @@
+html, body {
+  background-color: #f1f1f1;
+}
+
 .board {
   text-align: center;
   border-radius: 5px;
@@ -104,4 +108,16 @@ select {
 
 .text-center {
   text-align: center;
+}
+
+.main {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 5px;
+  box-shadow: 1px 2px 1px 1px #c4c4c4;
+  background-color: white;
 }

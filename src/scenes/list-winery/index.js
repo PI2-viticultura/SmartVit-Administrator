@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FaTimes, FaCheck } from "react-icons/fa";
 import api from "../../services/api";
 import "./style.css";
 import DataTable from "react-data-table-component";
@@ -26,6 +27,18 @@ function ListWinerys() {
       });
   };
 
+  const changeStatus = async (id) => {
+    await api.patch("/winery/" + id,
+      {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest"
+      }).then((res) => {
+        getWinerys();
+      }).catch((error) => {
+        getWinerys();
+      });
+  };
+
   useEffect(() => {
     getWinerys();
   }, []);
@@ -33,13 +46,20 @@ function ListWinerys() {
 
   const columns = [
     {
-      name: "Vinícola",
-      selector: "winery",
+      name: "Nome",
+      selector: "name",
       sortable: true,
     },
     {
-      name: "Nome",
-      selector: "name",
+      name: "Status",
+      cell: (row) => row.active === false ? <span>Desativada</span> : <span>Funcionando</span>,
+      selector: "active",
+      sortable: true,
+    },
+    {
+      name: "Ação",
+      cell: (row) => row.active === false ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
+      selector: "id",
       sortable: true,
     },
   ];
