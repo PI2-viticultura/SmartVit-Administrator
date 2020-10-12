@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import api from "../../services/api";
 import "./style.css";
-import DataTable, { createTheme } from "react-data-table-component";
+import DataTable from "react-data-table-component";
 
 function ListOrders() {
   const [data, setData] = useState([]);
@@ -14,7 +14,7 @@ function ListOrders() {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
         }).then((res) => {
-          orders = res.data.filter(element => typeof element.description === "string");
+          orders = res.data.filter((element) => typeof element.description === "string");
           setData(orders);
         }).catch((error) => {
         });
@@ -22,7 +22,7 @@ function ListOrders() {
 
   useEffect(() => {
     getOrders();
-  }, []);
+  });
 
   const changeStatus = async (orderId) => {
     await api.patch("/orders/" + orderId,
