@@ -8,8 +8,9 @@ import {
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Contratos from "./scenes/contract/index";
-import Winery from "./scenes/winery/index";
 import RegisterContract from "./scenes/register-contract/index";
+import ListWinerys from "./scenes/list-winery/index";
+import Winery from "./scenes/winery/index";
 import ListOrders from "./scenes/orders/index";
 import Users from "./scenes/user-list/index";
 import RegisterUser from "./scenes/user-register/index";
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/register">
           <RegisterContract />
+        </Route>
+        <Route path="/winerys">
+          <ListWinerys />
         </Route>
         <Route path="/orders">
           <ListOrders/>

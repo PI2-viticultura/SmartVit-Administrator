@@ -13,7 +13,7 @@ export const SidebarData = [
     },
     {
         title: " Vinícola",
-        path: "/winery",
+        path: "/winerys",
         icon: <GiIcons.GiGrapes />,
         cName: "nav-text"
     },
