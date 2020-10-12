@@ -25,7 +25,7 @@ export const SidebarData = [
     },
     {
         title: " Solicitações",
-        path: "/",
+        path: "/orders",
         icon: <VscIcons.VscSettingsGear />,
         cName: "nav-text"
     },
