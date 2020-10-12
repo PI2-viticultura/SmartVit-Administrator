@@ -3,7 +3,7 @@ import { FaTimes, FaCheck } from "react-icons/fa";
 import api from "../../services/api";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Grid, Input} from "@chakra-ui/core"
+import {Button, Grid, Input} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListWinerys() {
@@ -21,7 +21,7 @@ function ListWinerys() {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
       }).then((res) => {
-        winerys = res.data.filter(element => typeof element.name === "string");
+        winerys = res.data.filter((element) => typeof element.name === "string");
         setData(winerys);
       }).catch((error) => {
       });

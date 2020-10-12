@@ -9,7 +9,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import Contratos from "./scenes/contract/index";
 import RegisterContract from "./scenes/register-contract/index";
-import ListWinerys from "./scenes/list-winery/index"
+import ListWinerys from "./scenes/list-winery/index";
 import Winery from "./scenes/winery/index";
 
 function App() {
