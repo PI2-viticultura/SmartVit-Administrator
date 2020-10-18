@@ -11,7 +11,7 @@ import {
     Input,
 } from "@chakra-ui/core";
 
-import api from "../../services/api";
+import apiAdmin from "../../services/api-admin";
 import retirarMask from "../../utils/masks";
 import "./style.css";
 
@@ -41,7 +41,7 @@ function RegisterContract() {
     const [vinicola_field, setVinicola_field] = useState("");
 
     const makeRegister = async () => {
-        await api.post("/contract", {
+        await apiAdmin.post("/contract", {
             contractor: contratante,
             cpf_cnpj,
             address: endereco,
