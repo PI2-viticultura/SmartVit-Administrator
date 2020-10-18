@@ -14,6 +14,9 @@ function Winery(){
     const [success, setSuccess] = useState("");
 
     const makeRequest = async () => {
+        console.log(name);
+        console.log(address);
+        console.log(contractId);
         await apiWinery.post("/winery", {
             name,
             address,
