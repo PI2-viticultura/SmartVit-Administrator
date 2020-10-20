@@ -27,3 +27,7 @@ button {
   margin-bottom: 20px;
   text-align: center;
 }
+
+.input-filter {
+  float: right;
+}
