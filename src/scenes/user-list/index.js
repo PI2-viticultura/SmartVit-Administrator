@@ -32,8 +32,8 @@ function Users() {
             });
     };
 
-    const changeStatus = async (user_id) => {
-        await api.patch("/users/" + user_id,
+    const changeStatus = async (userId) => {
+        await api.patch("/users/" + userId,
         {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
@@ -95,7 +95,7 @@ function Users() {
                                 <Text fontSize="1em" color="gray">Fix after</Text>
                                 <Grid templateColumns="repeat(2, 1fr)">
                                     <Button className="btn-edit" onClick={() => pushToEdit(user._id.$oid)}>Editar</Button>
-                                    <Button className="btn-del" onClick={() => changeStatus(user._id.$oid)}> {user.situation == 0 ? 'Ativar' : 'Desativar'}</Button>
+                                    <Button className="btn-del" onClick={() => changeStatus(user._id.$oid)}> {user.situation === 0 ? "Ativar" : "Desativar"}</Button>
                                 </Grid>
                             </Grid>
                             <Divider borderColor="#615B5B" />
