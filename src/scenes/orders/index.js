@@ -28,13 +28,13 @@ function ListOrders() {
     event.preventDefault();
     const { value } = event.target;
 
-    if (value != ""){
-      let filtered_f = data.filter((element) => (element.name.toUpperCase().includes(value.toUpperCase())) || 
+    if (value !== ""){
+      let filteredF = data.filter((element) => (element.name.toUpperCase().includes(value.toUpperCase())) || 
                                                 (element.description.toUpperCase().includes(value.toUpperCase())) || 
                                                 (element.email.toUpperCase().includes(value.toUpperCase())) || 
                                                 (element.phoneNumber.toUpperCase().includes(value.toUpperCase())) 
                                   );
-      setFiltereData(filtered_f);
+      setFiltereData(filteredF);
     }else{
       setFiltereData(data);
     }
