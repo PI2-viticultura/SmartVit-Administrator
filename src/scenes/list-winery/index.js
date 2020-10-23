@@ -29,17 +29,19 @@ function ListWinerys() {
       });
   };
 
-  const search = (event)=>{
+  const search = (event) => {
     event.preventDefault();
     const { value } = event.target;
 
-    if (value != ""){
-      let filtered_f = data.filter((element) => (element.name.toUpperCase().includes(value.toUpperCase())) || (element.active && "FUNCIONANDO".includes(value.toUpperCase())) || (!element.active && "DESATIVADA".includes(value.toUpperCase())));
-      setFiltereData(filtered_f);
+    if (value !== ""){
+      let filteredF = data.filter((element) => (element.name.toUpperCase().includes(value.toUpperCase())) 
+                                || (element.active && "FUNCIONANDO".includes(value.toUpperCase()))
+                                || (!element.active && "DESATIVADA".includes(value.toUpperCase())));
+      setFiltereData(filteredF);
     }else{
       setFiltereData(data);
     }
-  }
+  };
 
   const changeStatus = async (id) => {
     await api.patch("/winery/" + id,
@@ -55,7 +57,7 @@ function ListWinerys() {
 
   useEffect(() => {
     getWinerys();
-  }, []);
+  }, [getWinerys]);
 
 
   const columns = [
