@@ -3,7 +3,7 @@ import {
     Alert,
     AlertIcon,
 } from "@chakra-ui/core";
-import api from "../../services/api";
+import apiWinery from "../../services/api-winery";
 import "../../globals/globalStyle.css";
 
 function Winery(){
@@ -14,7 +14,7 @@ function Winery(){
     const [success, setSuccess] = useState("");
 
     const makeRequest = async () => {
-        await api.post("/winery", {
+        await apiWinery.post("/winery", {
             name,
             address,
             contractId

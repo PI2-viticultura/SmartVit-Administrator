@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import api from "../../services/api";
+import apiAdmin from "../../services/api-admin";
 import "./style.css";
 import DataTable from "react-data-table-component";
 
@@ -9,7 +9,7 @@ function ListOrders() {
   let orders = [];
 
   const getOrders = async () => {
-    await api.get("/orders",
+    await apiAdmin.get("/orders",
         {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
@@ -25,7 +25,7 @@ function ListOrders() {
   });
 
   const changeStatus = async (orderId) => {
-    await api.patch("/orders/" + orderId,
+    await apiAdmin.patch("/orders/" + orderId,
         {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"

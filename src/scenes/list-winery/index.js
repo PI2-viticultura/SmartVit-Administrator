@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import api from "../../services/api";
+import apiWinery from "../../services/api-winery";
 import "./style.css";
 import DataTable from "react-data-table-component";
 import {Button, Grid, Input} from "@chakra-ui/core";
@@ -16,7 +16,7 @@ function ListWinerys() {
   let winerys = [];
 
   const getWinerys = async () => {
-    await api.get("/winery",
+    await apiWinery.get("/winery",
       {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
@@ -28,7 +28,7 @@ function ListWinerys() {
   };
 
   const changeStatus = async (id) => {
-    await api.patch("/winery/" + id,
+    await apiWinery.patch("/winery/" + id,
       {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
