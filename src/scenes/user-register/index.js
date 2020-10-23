@@ -13,7 +13,7 @@ import {
     InputRightElement,
 } from "@chakra-ui/core";
 
-import api from "../../services/api";
+import apiUser from "../../services/api-user";
 import retirarMask from "../../utils/masks";
 import "./style.css";
 
@@ -156,7 +156,7 @@ function RegisterUser() {
     }
 
     const makeRegister = async () => {
-        await api.post("/user", {
+        await apiUser.post("/user", {
             name,
             cpf,
             email,

@@ -14,7 +14,7 @@ import {
     InputRightElement,
 } from "@chakra-ui/core";
 
-import api from "../../services/api";
+import apiUser from "../../services/api-user";
 import retirarMask from "../../utils/masks";
 import "./style.css";
 
@@ -171,7 +171,7 @@ function EditUser() {
             setSuccess(null);
             return;
         }
-        await api.put("/user/" + userId, {
+        await apiUser.put("/user/" + userId, {
             name,
             cpf,
             email,
