@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { Box, Button, Input, Grid, Divider, Text } from "@chakra-ui/core";
 import "./style.css";
-import api from "../../services/api";
+import apiUser from "../../services/api-user";
 import { Scrollbars } from "react-custom-scrollbars";
 
 
@@ -18,7 +18,7 @@ function Users() {
     const [success, setSuccess] = useState("");
 
     const makeGetUser = async () => {
-        await api.get("/user",
+        await apiUser.get("/user",
             {
                 "Content-Type": "application/json",
                 "X-Requested-With": "XMLHttpRequest"
