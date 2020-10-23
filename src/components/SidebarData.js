@@ -3,18 +3,25 @@ import * as VscIcons from "react-icons/vsc";
 import * as BiIcons from "react-icons/bi";
 import * as HiIcons from "react-icons/hi";
 import * as GiIcons from "react-icons/gi";
+import * as GoIcons from "react-icons/go";
 
 export const SidebarData = [
     {
         title: " Home",
         path: "/",
-        icon: <HiIcons.HiDocumentReport />,
+        icon: <BiIcons.BiHomeAlt />,
         cName: "nav-text"
     },
     {
         title: " Vinícola",
         path: "/winerys",
         icon: <GiIcons.GiGrapes />,
+        cName: "nav-text"
+    },
+    {
+        title: " Sistemas",
+        path: "/systems",
+        icon: <VscIcons.VscSettingsGear  />,
         cName: "nav-text"
     },
     {
@@ -26,7 +33,7 @@ export const SidebarData = [
     {
         title: " Solicitações",
         path: "/orders",
-        icon: <VscIcons.VscSettingsGear />,
+        icon: <GoIcons.GoRequestChanges />,
         cName: "nav-text"
     },
     {

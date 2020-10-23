@@ -15,6 +15,8 @@ import ListOrders from "./scenes/orders/index";
 import Users from "./scenes/user-list/index";
 import RegisterUser from "./scenes/user-register/index";
 import EditUser from "./scenes/user-edit/index";
+import RegisterSystem from "./scenes/system-register/index"
+import ListSystems from "./scenes/system-list/index";
 
 function App() {
   return (
@@ -44,6 +46,12 @@ function App() {
         </Route>
         <Route path="/user-edit">
           <EditUser />
+        </Route>
+        <Route path="/system-register">
+          <RegisterSystem />
+        </Route>
+        <Route path="/systems">
+          <ListSystems />
         </Route>
       </Switch>
     </BrowserRouter>
