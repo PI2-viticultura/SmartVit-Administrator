@@ -17,6 +17,7 @@ import RegisterUser from "./scenes/user-register/index";
 import EditUser from "./scenes/user-edit/index";
 import RegisterSystem from "./scenes/system-register/index"
 import ListSystems from "./scenes/system-list/index";
+import EditSystem from "./scenes/system-edit/index";
 
 function App() {
   return (
@@ -52,6 +53,9 @@ function App() {
         </Route>
         <Route path="/systems">
           <ListSystems />
+        </Route>
+        <Route path="/system-edit">
+          <EditSystem />
         </Route>
       </Switch>
     </BrowserRouter>
