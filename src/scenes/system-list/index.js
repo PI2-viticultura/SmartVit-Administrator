@@ -44,7 +44,7 @@ function ListSystems() {
   });
 
 
-  const columns = [
+  const columns_system = [
     {
       name: "Nome",
       selector: "name",
@@ -72,7 +72,7 @@ function ListSystems() {
         </Grid>
       <div className="systems">
         <DataTable
-          columns={columns}
+          columns={columns_system}
           data={data}
           defaultSortField="name"
           pagination={true}

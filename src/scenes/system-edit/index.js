@@ -99,7 +99,7 @@ function EditSystem() {
 
         setStatusField(false);
         setStatus(value);
-    }
+    };
 
     const makeEdit = async () => {
         if (systemId === null || systemId === undefined) {
@@ -123,7 +123,7 @@ function EditSystem() {
                 setError("error");
                 setSuccess("");
             });
-    }
+    };
 
     return (
         <div className="main-event">
