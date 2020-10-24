@@ -3,6 +3,7 @@ import * as VscIcons from "react-icons/vsc";
 import * as BiIcons from "react-icons/bi";
 import * as HiIcons from "react-icons/hi";
 import * as GiIcons from "react-icons/gi";
+import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
     {
@@ -15,6 +16,12 @@ export const SidebarData = [
         title: " Vinícola",
         path: "/winerys",
         icon: <GiIcons.GiGrapes />,
+        cName: "nav-text"
+    },
+    {
+        title: " Sensor",
+        path: "/sensor",
+        icon: <RiIcons.RiSensorLine />,
         cName: "nav-text"
     },
     {
