@@ -81,7 +81,7 @@ function EditSensor() {
 
         setIdentifierField(false);
         setIdentifier(retirarMask(value));
-    }
+    };
     const handleValidationType = (event) => {
         event.preventDefault();
         const { value } = event.target;
