@@ -1,25 +1,24 @@
 .main-event {
-    position: fixed;
-    top: 55%;
-    left: 50%;
-    width: 30%;
-    transform: translate(-50%, -50%);
-    border-radius: 5px;
-    box-shadow: 1px 2px 1px 1px #c4c4c4;
-  }
-  
-  .box-sensor {
-    height: auto;
-    padding: 4%;
-  }
-  
-  .title-box {
-    text-align: center;
-    padding-bottom: 2%;
-  }
-  
-  .button-box {
-    text-align: center;
-    margin-top: 5%;
-  }
-  
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  width: 30%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+  box-shadow: 1px 2px 1px 1px #c4c4c4;
+}
+
+.box-sensor {
+  height: auto;
+  padding: 4%;
+}
+
+.title-box {
+  text-align: center;
+  padding-bottom: 2%;
+}
+
+.button-box {
+  text-align: center;
+  margin-top: 5%;
+}

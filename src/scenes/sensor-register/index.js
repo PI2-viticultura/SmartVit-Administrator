@@ -93,7 +93,7 @@ function RegisterSensor(){
                 <div className="periodInnerContainer">
                     <div className="inputMensagem periodInput">
                         Último Registro <br/>
-                        <DatePicker selected={lastRegister} onChange={date => {setLastRegister(date)}}> </DatePicker>
+                        <DatePicker selected={lastRegister} onChange={(date) => {setLastRegister(date);}}> </DatePicker>
                     </div>
                 </div>
             </div>
