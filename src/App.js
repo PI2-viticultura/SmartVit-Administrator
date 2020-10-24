@@ -15,7 +15,7 @@ import ListOrders from "./scenes/orders/index";
 import Users from "./scenes/user-list/index";
 import RegisterUser from "./scenes/user-register/index";
 import EditUser from "./scenes/user-edit/index";
-import RegisterSystem from "./scenes/system-register/index"
+import RegisterSystem from "./scenes/system-register/index";
 import ListSystems from "./scenes/system-list/index";
 import EditSystem from "./scenes/system-edit/index";
 
