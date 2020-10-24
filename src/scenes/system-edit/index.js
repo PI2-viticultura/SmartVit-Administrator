@@ -79,7 +79,7 @@ function EditSystem() {
 
         setLongitudeField(false);
         setLongitude(retirarMask(value));
-    }
+    };
     const handleValidationStatus = (event) => {
         event.preventDefault();
         const { value } = event.target;

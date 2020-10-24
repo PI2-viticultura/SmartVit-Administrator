@@ -57,7 +57,7 @@ function ListSystems() {
       sortable: true,
     },
     {
-      name: "Ação",
+      name: "Procedimento",
       cell: (row) => row.active === false ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
       selector: "id",
       sortable: true,
