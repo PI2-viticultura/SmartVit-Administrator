@@ -71,17 +71,17 @@ function RegisterSensor(){
                 </div>
                     <input type="text" maxLength='50' value={identifier} onChange={(e) => {setIdentifier(e.target.value);}}></input>
             </div>
-            <div className="inputType">
-                <div className="labelContainer">
-                    <p className="labelText">Tipo:</p>
-                </div>
-                    <input type="text" maxLength='50' value={type} onChange={(e) => {setType(e.target.value);}}></input>
-            </div>
             <div className="inputSituation">
                 <div className="labelContainer">
                     <p className="labelText">Situação:</p>
                 </div>
                     <input type="text" maxLength='50' value={situation} onChange={(e) => {setSituation(e.target.value);}}></input>
+            </div>
+            <div className="inputType">
+                <div className="labelContainer">
+                    <p className="labelText">Tipo:</p>
+                </div>
+                    <input type="text" maxLength='50' value={type} onChange={(e) => {setType(e.target.value);}}></input>
             </div>
             <div className="inputId">
                 <div className="labelContainer">

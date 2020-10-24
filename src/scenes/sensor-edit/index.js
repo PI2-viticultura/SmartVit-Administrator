@@ -82,19 +82,6 @@ function EditSensor() {
         setIdentifierField(false);
         setIdentifier(retirarMask(value));
     };
-    const handleValidationType = (event) => {
-        event.preventDefault();
-        const { value } = event.target;
-
-        if (value.trim() === "") {
-            setTypeField(true);
-            setType(null);
-            return;
-        }
-
-        setTypeField(false);
-        setType(value);
-    }
     const handleValidationSituation = (event) => {
         event.preventDefault();
         const { value } = event.target;
@@ -107,7 +94,20 @@ function EditSensor() {
 
         setSituationField(false);
         setSituation(value);
-    }
+    };
+    const handleValidationType = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === "") {
+            setTypeField(true);
+            setType(null);
+            return;
+        }
+
+        setTypeField(false);
+        setType(value);
+    };
 
     const makeEdit = async () => {
         if (sensorId === null || sensorId === undefined) {
@@ -132,7 +132,7 @@ function EditSensor() {
                 setError("error");
                 setSuccess("");
             });
-    }
+    };
 
     return (
         <div className="main-event">
@@ -164,14 +164,16 @@ function EditSensor() {
                         <Input isInvalid={identifierField} id="identifier" placeholder="Identificador" onChange={(e) => { handleValidationIdentifier(e); }} />
                     </FormControl>
 
-                    <FormControl className="fieldType" isRequired>
-                        <FormLabel htmlFor="type">Tipo</FormLabel>
-                        <Input isInvalid={typeField} id="type" placeholder="Tipo" onChange={(e) => { handleValidationType(e); }} />
-                    </FormControl>
                     <FormControl className="fieldSituation" isRequired>
                         <FormLabel htmlFor="situation">Situação</FormLabel>
                         <Input isInvalid={situationField} id="situation" placeholder="Situação" onChange={(e) => { handleValidationSituation(e); }} />
                     </FormControl>
+                    
+                    <FormControl className="fieldType" isRequired>
+                        <FormLabel htmlFor="type">Tipo</FormLabel>
+                        <Input isInvalid={typeField} id="type" placeholder="Tipo" onChange={(e) => { handleValidationType(e); }} />
+                    </FormControl>
+                    
                 </div>
                 <div className="button-box">
                     <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeEdit()}>Atualizar</Button>

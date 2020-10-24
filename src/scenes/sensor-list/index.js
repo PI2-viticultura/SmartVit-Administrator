@@ -53,14 +53,15 @@ function ListSensors() {
     {
       name: "Status",
       cell: (row) => row.active === false ? <span>Desativado</span> : <span>Ativado</span>,
-      selector: "active",
       sortable: true,
+      selector: "active",
     },
     {
       name: "Ação",
       cell: (row) => row.active === false ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
-      selector: "id",
       sortable: true,
+      selector: "id",
+      
     },
   ];
 
