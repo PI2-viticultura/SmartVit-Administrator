@@ -18,3 +18,11 @@
 .box-contrato {
   padding: 5%;
 }
+
+.naoAtendido {
+  text-align: center;
+}
+
+.Atendido {
+  text-align: center;
+}

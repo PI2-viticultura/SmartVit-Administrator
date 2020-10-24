@@ -44,23 +44,23 @@ function ListSystems() {
   });
 
 
-  const columns_system = [
+  const columns = [
     {
-      name: "Nome",
+      name: "Sistema",
       selector: "name",
       sortable: true,
     },
     {
       name: "Status",
       cell: (row) => row.active === false ? <span>Desativado</span> : <span>Ativado</span>,
-      selector: "active",
       sortable: true,
+      selector: "active",
     },
     {
-      name: "Procedimento",
-      cell: (row) => row.active === false ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
-      selector: "id",
+      name: "Ação",
+      cell: (row) => row.active === false ? <button className="naoAtendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="Atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
       sortable: true,
+      selector: "id",
     },
   ];
 
@@ -72,7 +72,7 @@ function ListSystems() {
         </Grid>
       <div className="systems">
         <DataTable
-          columns={columns_system}
+          columns={columns}
           data={data}
           defaultSortField="name"
           pagination={true}
