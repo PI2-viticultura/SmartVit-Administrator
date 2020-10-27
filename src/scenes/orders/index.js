@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import api from "../../services/api";
-import {Button, Grid, Input} from "@chakra-ui/core";
+import {Input} from "@chakra-ui/core";
 import apiAdmin from "../../services/api-admin";
 import "./style.css";
 import DataTable from "react-data-table-component";
@@ -43,7 +42,7 @@ function ListOrders() {
 
   useEffect(() => {
     getOrders();
-  }, []);
+  });
 
   const changeStatus = async (orderId) => {
     await apiAdmin.patch("/orders/" + orderId,
