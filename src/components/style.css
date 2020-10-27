@@ -12,8 +12,15 @@
   background: none;
 }
 
+.menu-bars-close {
+  margin-left: 2rem;
+  font-size: 2em;
+  color: white;
+  background: none;
+}
+
 .nav-menu {
-  background-color: #6ca851;
+  background-color: #3c773c;
   width: 250px;
   height: 100vh;
   display: flex;
@@ -61,10 +68,16 @@
 
 .navbar-toggle {
   content: "SmartVit";
-  background-color: #408040;
+  background-color: #6ca851;
   width: 100%;
   height: 80px;
   display: flex;
   justify-content: start;
   align-items: center;
+}
+
+span {
+  margin-left: 3px;
+  margin-top: 30px;
+  margin-right: 15px;
 }
