@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
 import { FaTimes, FaCheck } from "react-icons/fa";
+import {Input} from "@chakra-ui/core";
 import apiAdmin from "../../services/api-admin";
 import "./style.css";
 import DataTable from "react-data-table-component";
 
 function ListOrders() {
   const [data, setData] = useState([]);
+  const [filtereData, setFiltereData] = useState([]);
+
   let orders = [];
 
   const getOrders = async () => {
@@ -16,8 +19,25 @@ function ListOrders() {
         }).then((res) => {
           orders = res.data.filter((element) => typeof element.description === "string");
           setData(orders);
+          setFiltereData(orders);
         }).catch((error) => {
         });
+  };
+
+  const search = (event) => {
+    event.preventDefault();
+    const { value } = event.target;
+
+    if (value !== ""){
+      let filteredF = data.filter((element) => (element.name.toUpperCase().includes(value.toUpperCase())) || 
+                                                (element.description.toUpperCase().includes(value.toUpperCase())) || 
+                                                (element.email.toUpperCase().includes(value.toUpperCase())) || 
+                                                (element.phoneNumber.toUpperCase().includes(value.toUpperCase())) 
+                                  );
+      setFiltereData(filteredF);
+    }else{
+      setFiltereData(data);
+    }
   };
 
   useEffect(() => {
@@ -69,9 +89,10 @@ function ListOrders() {
           <div className="div-title"> 
             <span className="title">Solicitações</span>
           </div>
+          <Input className="input-filter" placeholder="Pesquisar" w="20%" borderColor="#919FA7" onChange={(e) => search(e)}/>
           <DataTable
             columns={columns}
-            data={data}
+            data={filtereData}
             defaultSortField="Descrição"
             pagination={true}
           />
