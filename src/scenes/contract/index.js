@@ -18,11 +18,11 @@ function Contratos() {
     ];
     return (
         <div className="main">
-            <Box className="p-5" bg="#FFFFFF" rounded="md" h="35.48125em">
-                <Grid className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-                    <Button className="button-newContract" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</Button>
-                    <Input className="input-newContract" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
-                </Grid>
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
+                <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
+                    <Button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</Button>
+                    <Input className="input-newWinery" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
+                </div>
                 <Grid className="column-name" templateColumns="repeat(4, 1fr)">
                     <Text fontSize="1em" color="gray">Contrato</Text>
                     <Text fontSize="1em" color="gray">Contratante</Text>
