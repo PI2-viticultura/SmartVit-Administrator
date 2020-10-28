@@ -7,8 +7,6 @@ import apiUser from "../../services/api-user";
 import { Scrollbars } from "react-custom-scrollbars";
 
 
-
-
 function Users() {
     const history = useHistory();
     const [users, setUsers] = useState([]);
@@ -89,7 +87,6 @@ function Users() {
             </Box >
         </div >
     );
-
 }
 
 export default Users;
