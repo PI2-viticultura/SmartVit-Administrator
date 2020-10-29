@@ -33,7 +33,7 @@ function Users() {
     };
 
     const changeStatus = async (userId) => {
-        await api.patch("/users/" + userId,
+        await this.api.patch("/users/" + userId,
         {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
