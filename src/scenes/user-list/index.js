@@ -30,6 +30,21 @@ function Users() {
             });
     };
 
+    const changeStatus = async (userId) => {
+        await this.api.patch("/users/" + userId,
+        {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        }).then((res) => {
+            setSuccess("success");
+            makeGetUser();
+            return res;
+        }).catch((error) => {
+            setError("error");
+            return error;
+        });
+    };
+
     useEffect(() => {
         if (users.length === 0) {
             makeGetUser();
@@ -50,6 +65,7 @@ function Users() {
         });
     }
 
+    
     return (
         <div className="main">
             <Box className="p-5" bg="#FFFFFF" rounded="md">
@@ -74,8 +90,8 @@ function Users() {
                                 <Text fontSize="1em" color="gray">40028922</Text>
                                 <Text fontSize="1em" color="gray">Fix after</Text>
                                 <Grid templateColumns="repeat(2, 1fr)">
-                                    <Button className="btn-edit" onClick={() => pushToEdit(users[0]._id.$oid)}>Editar</Button>
-                                    <Button className="btn-del">Deletar</Button>
+                                    <Button className="btn-edit" onClick={() => pushToEdit(user._id.$oid)}>Editar</Button>
+                                    <Button className="btn-del" onClick={() => changeStatus(user._id.$oid)}> {user.situation === 0 ? "Ativar" : "Desativar"}</Button>
                                 </Grid>
                             </Grid>
                             <Divider borderColor="#615B5B" />
