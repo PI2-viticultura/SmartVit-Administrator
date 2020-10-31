@@ -18,6 +18,9 @@ import EditUser from "./scenes/user-edit/index";
 import RegisterSystem from "./scenes/system-register/index";
 import ListSystems from "./scenes/system-list/index";
 import EditSystem from "./scenes/system-edit/index";
+import RegisterSensor from "./scenes/sensor-register/index";
+import ListSensors from "./scenes/sensor-list/index";
+import EditSensor from "./scenes/sensor-edit/index";
 
 function App() {
   return (
@@ -56,6 +59,15 @@ function App() {
         </Route>
         <Route path="/system-edit">
           <EditSystem />
+        </Route>
+        <Route path="/sensor">
+          <ListSensors />
+        </Route>
+        <Route path="/sensor-register">
+          <RegisterSensor />
+        </Route>
+        <Route path="/sensor-edit">
+          <EditSensor />
         </Route>
       </Switch>
     </BrowserRouter>

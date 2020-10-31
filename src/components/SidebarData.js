@@ -4,6 +4,7 @@ import * as BiIcons from "react-icons/bi";
 import * as HiIcons from "react-icons/hi";
 import * as GiIcons from "react-icons/gi";
 import * as GoIcons from "react-icons/go";
+import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
     {
@@ -22,6 +23,12 @@ export const SidebarData = [
         title: " Sistemas",
         path: "/systems",
         icon: <VscIcons.VscSettingsGear  />,
+        cName: "nav-text"
+    },
+    {
+        title: " Sensor",
+        path: "/sensor",
+        icon: <RiIcons.RiSensorLine />,
         cName: "nav-text"
     },
     {
