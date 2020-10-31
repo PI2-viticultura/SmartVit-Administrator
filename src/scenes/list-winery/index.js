@@ -56,7 +56,22 @@ function ListWinerys() {
   };
 
   useEffect(() => {
-    getWinerys();
+    let winerys_list = [];
+
+    const getAllWinerys = async () => {
+      await api.get("/winery",
+        {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest"
+        }).then((res) => {
+          winerys_list = res.data.filter((element) => typeof element.name === "string");
+          setData(winerys_list);
+          setFiltereData(winerys_list);
+        }).catch((error) => {
+        });
+    };
+
+    getAllWinerys();
   }, [getWinerys]);
 
 
