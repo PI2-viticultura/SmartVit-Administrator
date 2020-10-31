@@ -40,7 +40,7 @@ function ListWinerys() {
   };
 
   useEffect(() => {
-    let winery_list = [];
+    let wineryList = [];
 
     const startWinerys = async () => {
       await apiWinery.get("/winery",
@@ -48,8 +48,8 @@ function ListWinerys() {
           "Content-Type": "application/json",
           "X-Requested-With": "XMLHttpRequest"
         }).then((res) => {
-          winery_list = res.data.filter((element) => typeof element.name === "string");
-          setData(winery_list);
+          wineryList = res.data.filter((element) => typeof element.name === "string");
+          setData(wineryList);
         }).catch((error) => {
         });
     };
