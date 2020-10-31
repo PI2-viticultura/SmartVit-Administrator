@@ -72,7 +72,7 @@ function ListWinerys() {
     };
 
     getAllWinerys();
-  }, [getWinerys]);
+  }, []);
 
 
   const columns = [
