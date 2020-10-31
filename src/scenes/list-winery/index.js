@@ -40,7 +40,20 @@ function ListWinerys() {
   };
 
   useEffect(() => {
-    getWinerys();
+    let winery_list = [];
+
+    const startWinerys = async () => {
+      await apiWinery.get("/winery",
+        {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest"
+        }).then((res) => {
+          winery_list = res.data.filter((element) => typeof element.name === "string");
+          setData(winery_list);
+        }).catch((error) => {
+        });
+    };
+    startWinerys();
   }, []);
 
 
