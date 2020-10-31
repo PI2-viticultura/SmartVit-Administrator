@@ -57,7 +57,7 @@ function ListWinerys() {
 
   useEffect(() => {
     getWinerys();
-  }, []);
+  });
 
 
   const columns = [
