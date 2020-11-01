@@ -41,7 +41,7 @@ function RegisterContract() {
     const [vinicola_field, setVinicola_field] = useState("");
 
     const makeRegister = async () => {
-        await apiAdmin.post("/contract", {
+        await apiAdmin.post("/contracts", {
             contractor: contratante,
             cpf_cnpj,
             address: endereco,
