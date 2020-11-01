@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
+import { FaTimes, FaCheck } from "react-icons/fa";
 import { Box, Button, Input, Grid, Divider, Text } from "@chakra-ui/core";
 import "./style.css";
 import apiAdmin from "../../services/api-admin";
+import DataTable from "react-data-table-component";
+
 
 function Contratos() {
-    const [contracts, setContracts] = useState([]);
-    const [error, setError] = useState("");
-    const [success, setSuccess] = useState("");
+    const [data, setData] = useState([]);
+    let contracts = [];
     const history = useHistory();
+
 
     const makeGetContract = async () => {
         await apiAdmin.get("/contracts",
@@ -17,12 +19,9 @@ function Contratos() {
                 "Content-Type": "application/json",
                 "X-Requested-With": "XMLHttpRequest"
             }).then((res) => {
-                setContracts(res.data);
-                setSuccess("success");
-                return res;
+                contracts = res.data.filter((element) => typeof element.contratante === "string");
+                setData(contracts);
             }).catch((error) => {
-                setError("error");
-                return error;
             });
     };
 
@@ -32,28 +31,44 @@ function Contratos() {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
         }).then((res) => {
-            setSuccess("success");
             makeGetContract();
-            return res;
         }).catch((error) => {
-            setError("error");
-            return error;
         });
     };
 
     useEffect(() => {
-        if (contracts.length === 0) {
-            makeGetContract();
-        }
-        return;
+      makeGetContract();
     });
 
     const pushToRegister = () => {
         history.push({
             pathname: "/register"
         });
-    }
+    };
 
+    const columns = [
+    {
+      name: "Contrato",
+      selector: "contrato",
+      sortable: true,
+    },
+    {
+      name: "Contratante",
+      selector: "contratante",
+      sortable: true,
+    },
+    {
+      name: "Data",
+      selector: "data",
+      sortable: true,
+    },
+    {
+      name: "Cancelar Contrato?",
+      cell: (row) => row.status === 0 ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
+      selector: "status",
+      sortable: true,
+    },
+  ];
 
     return (
         <div className="main">
@@ -62,28 +77,13 @@ function Contratos() {
                     <Button className="button-newContract" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</Button>
                     <Input className="input-newContract" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
                 </Grid>
-                <Grid className="column-name" templateColumns="repeat(4, 1fr)">
-                    <Text fontSize="1em" color="gray">Contrato</Text>
-                    <Text fontSize="1em" color="gray">Contratante</Text>
-                    <Text fontSize="1em" color="gray">Data</Text>
-                    <Text fontSize="1em" color="gray">Ação</Text>
-                </Grid>
-                <Divider borderColor="#615B5B" />
-                {contracts.map(contract => (
-                <div>
-                <Grid  className="column-atrib" templateColumns="repeat(4, 1fr)">
-                    <Text fontSize="1em" color="gray">{contract.contrato}</Text>
-                    <Text fontSize="1em" color="gray">{contract.contratante }</Text>
-                    <Text fontSize="1em" color="gray">{contract.data}</Text>
-                    <Grid templateColumns="repeat(2, 1fr)">
-                    <Button className="btn-del" onClick={() => changeStatus(contract._id.$oid)}> {contract.status === 0 ? 'Ativar' : 'Desativar'}</Button>
-
-                    </Grid>
-                </Grid>
-                </div>
-                ))}
-                <Divider borderColor="#C4C4C4"/>
-
+            <DataTable
+            columns={columns}
+            data={data}
+            defaultSortField="Contratante"
+            pagination={true}
+            />
+            <Divider borderColor="#C4C4C4"/>
             </Box >
         </div >
     );

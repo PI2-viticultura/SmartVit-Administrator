@@ -29,3 +29,17 @@
   padding-right: 5%;
   text-align: center;
 }
+
+.nao-atendido {
+  color: red;
+  font-size: 20px;
+}
+
+button {
+  outline: none;
+}
+
+.atendido {
+  color: green;
+  font-size: 20px;
+}
