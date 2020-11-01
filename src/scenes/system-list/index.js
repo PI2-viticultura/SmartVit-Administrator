@@ -53,14 +53,14 @@ function ListSystems() {
     {
       name: "Status",
       cell: (row) => row.active === false ? <span>Desativado</span> : <span>Ativado</span>,
-      sortable: true,
       selector: "active",
+      sortable: true,
     },
     {
       name: "Ação",
       cell: (row) => row.active === false ? <button className="naoAtendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="Atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
-      sortable: true,
       selector: "id",
+      sortable: true,
     },
   ];
 
