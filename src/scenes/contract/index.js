@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import { Box, Button, Input, Grid, Divider, Text } from "@chakra-ui/core";
+import { Box, Button, Input, Grid, Divider} from "@chakra-ui/core";
 import "./style.css";
 import apiAdmin from "../../services/api-admin";
 import DataTable from "react-data-table-component";
