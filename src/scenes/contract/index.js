@@ -54,19 +54,19 @@ function Contratos() {
     },
     {
       name: "Contratante",
-      selector: "contratante",
       sortable: true,
+      selector: "contratante",
     },
     {
       name: "Data",
-      selector: "data",
       sortable: true,
+      selector: "data",
     },
     {
       name: "Cancelar Contrato?",
       cell: (row) => row.status === 0 ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
-      selector: "status",
       sortable: true,
+      selector: "cancel",
     },
   ];
 
