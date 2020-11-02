@@ -98,12 +98,12 @@ function ListWinerys() {
       <Box className="p-5" bg="#FFFFFF" rounded="md">
         <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
           <Button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVA VINÍCOLA</Button>
-          <Input className="input-newWinery" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
+          <Input className="input-newWinery" placeholder="Pesquisar" w="65%" borderColor="#919FA7" onChange={(e) => search(e)}/>
         </div>
         <div className="winerys">
           <DataTable
             columns={columns}
-            data={data}
+            data={filtereData}
             defaultSortField="name"
             pagination={true}
           />
