@@ -8,6 +8,7 @@ import { useHistory } from "react-router-dom";
 
 function ListWinerys() {
   const [data, setData] = useState([]);
+  const [filtereData, setFiltereData] = useState([]);
   const history = useHistory();
   const pushToRegister = async () => {
     history.push("/winery");
@@ -23,8 +24,23 @@ function ListWinerys() {
       }).then((res) => {
         winerys = res.data.filter((element) => typeof element.name === "string");
         setData(winerys);
+        setFiltereData(winerys);
       }).catch((error) => {
       });
+  };
+
+  const search = (event) => {
+    event.preventDefault();
+    const { value } = event.target;
+
+    if (value !== ""){
+      let filteredF = data.filter((element) => (element.name.toUpperCase().includes(value.toUpperCase())) 
+                                || (element.active && "FUNCIONANDO".includes(value.toUpperCase()))
+                                || (!element.active && "DESATIVADA".includes(value.toUpperCase())));
+      setFiltereData(filteredF);
+    }else{
+      setFiltereData(data);
+    }
   };
 
   const changeStatus = async (id) => {
