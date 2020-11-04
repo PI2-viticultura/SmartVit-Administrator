@@ -4,6 +4,7 @@ import {Input} from "@chakra-ui/core";
 import apiAdmin from "../../services/api-admin";
 import "./style.css";
 import DataTable from "react-data-table-component";
+import {Heading, Box} from "@chakra-ui/core";
 
 function ListOrders() {
   const [data, setData] = useState([]);
@@ -85,9 +86,12 @@ function ListOrders() {
   ];
 
   return (
-      <div className="orders"> 
-          <div className="div-title"> 
-            <span className="title">Solicitações</span>
+      <div className="main">
+        <Box className="p-5" bg="#FFFFFF" rounded="md">
+          <div className="title-box">
+              <Heading as="h3" size="md">
+                Solicitações
+              </Heading>
           </div>
           <Input className="input-filter" placeholder="Pesquisar" w="20%" borderColor="#919FA7" onChange={(e) => search(e)}/>
           <DataTable
@@ -96,6 +100,7 @@ function ListOrders() {
             defaultSortField="Descrição"
             pagination={true}
           />
+        </Box>
       </div>
   );
 }

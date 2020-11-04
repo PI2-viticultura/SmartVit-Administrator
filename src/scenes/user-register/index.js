@@ -177,7 +177,7 @@ function RegisterUser() {
     }
 
     return (
-        <div className="main-event">
+        <div className="main">
             {success === "success" ?
                 <Alert status="success" variant="solid">
                     <AlertIcon />
@@ -226,7 +226,7 @@ function RegisterUser() {
                     </FormControl>
                 </div>
                 <div className="button-box">
-                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
+                    <Button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
                 </div>
             </Box>
         </div >

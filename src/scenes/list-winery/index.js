@@ -3,7 +3,7 @@ import { FaTimes, FaCheck } from "react-icons/fa";
 import apiWinery from "../../services/api-winery";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Grid, Input} from "@chakra-ui/core";
+import {Button, Input, Box} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListWinerys() {
@@ -12,7 +12,7 @@ function ListWinerys() {
   const history = useHistory();
   const pushToRegister = async () => {
     history.push("/winery");
-};
+  };
   
   let winerys = [];
 
@@ -56,8 +56,21 @@ function ListWinerys() {
   };
 
   useEffect(() => {
-    getWinerys();
-  });
+    let wineryList = [];
+
+    const startWinerys = async () => {
+      await apiWinery.get("/winery",
+        {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest"
+        }).then((res) => {
+          wineryList = res.data.filter((element) => typeof element.name === "string");
+          setData(wineryList);
+        }).catch((error) => {
+        });
+    };
+    startWinerys();
+  }, []);
 
 
   const columns = [
@@ -82,18 +95,20 @@ function ListWinerys() {
 
   return (
     <div className="main">
-        <Grid className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-          <Button className="button-newWinery" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVA VINÍCOLA</Button>
+      <Box className="p-5" bg="#FFFFFF" rounded="md">
+        <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
+          <Button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVA VINÍCOLA</Button>
           <Input className="input-newWinery" placeholder="Pesquisar" w="65%" borderColor="#919FA7" onChange={(e) => search(e)}/>
-        </Grid>
-      <div className="winerys">
-        <DataTable
-          columns={columns}
-          data={filtereData}
-          defaultSortField="name"
-          pagination={true}
-        />
-      </div>
+        </div>
+        <div className="winerys">
+          <DataTable
+            columns={columns}
+            data={filtereData}
+            defaultSortField="name"
+            pagination={true}
+          />
+        </div>
+      </Box>
     </div>
   );
 }

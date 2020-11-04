@@ -7,8 +7,6 @@ import apiUser from "../../services/api-user";
 import { Scrollbars } from "react-custom-scrollbars";
 
 
-
-
 function Users() {
     const history = useHistory();
     const [users, setUsers] = useState([]);
@@ -70,13 +68,11 @@ function Users() {
     
     return (
         <div className="main">
-            <Box className="box-user" bg="#FFFFFF" rounded="md" h="35.48125em" width={[
-                "100%", // base
-            ]} fontSize={["sm", "md", "lg", "xl"]}>
-                <Grid className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-                    <Button className="button-newuser" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO USUÁRIO</Button>
-                    <Input className="input-newUser" placeholder="Basic usage" w="65%" borderColor="#919FA7" />
-                </Grid>
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
+                <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
+                    <Button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO USUÁRIO</Button>
+                    <Input className="input-newWinery" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
+                </div>
                 <Grid className="column-name" templateColumns="repeat(5, 1fr)">
                     <Text fontSize="1em" color="gray">Nome</Text>
                     <Text fontSize="1em" color="gray">Email</Text>
@@ -105,7 +101,6 @@ function Users() {
             </Box >
         </div >
     );
-
 }
 
 export default Users;

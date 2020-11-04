@@ -231,7 +231,7 @@ function RegisterContract() {
                     Erro ao cadastrar
                 </Alert>
             }
-            <Box className="box-contrato" bg="#FFFFFF" rounded="md">
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
                 <div className="title-box">
                     <Heading as="h3" size="md">
                         Cadastrar Contrato
@@ -278,7 +278,7 @@ function RegisterContract() {
                     </FormControl>
                 </div>
                 <div className="button-box">
-                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
+                    <Button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
                 </div>
             </Box>
         </div>
