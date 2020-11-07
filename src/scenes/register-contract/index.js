@@ -238,7 +238,7 @@ function RegisterContract() {
                     Erro ao cadastrar
                 </Alert>
             }
-            <Box className="box-contrato" bg="#FFFFFF" rounded="md">
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
                 <div className="title-box">
                     <Heading as="h3" size="md">
                         Cadastrar Contrato

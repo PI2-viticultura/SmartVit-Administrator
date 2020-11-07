@@ -194,7 +194,7 @@ function EditUser() {
     }
 
     return (
-        <div className="main-event">
+        <div className="main">
             {success === "success" ?
                 <Alert status="success" variant="solid">
                     <AlertIcon />
@@ -249,7 +249,7 @@ function EditUser() {
                     </FormControl>
                 </div>
                 <div className="button-box">
-                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeEdit()}>Atualizar</Button>
+                    <Button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeEdit()}>Atualizar</Button>
                 </div>
             </Box>
         </div >

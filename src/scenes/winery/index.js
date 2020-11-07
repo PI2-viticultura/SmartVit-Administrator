@@ -2,6 +2,12 @@ import React, {useState} from "react";
 import {
     Alert,
     AlertIcon,
+    Box,
+    Heading,
+    Button,
+    FormControl,
+    FormLabel,
+    Input
 } from "@chakra-ui/core";
 import apiWinery from "../../services/api-winery";
 import "../../globals/globalStyle.css";
@@ -35,7 +41,7 @@ function Winery(){
     };
 
     return (
-        <div className="board">
+        <div className="main">
             {success === "success" &&
                 <Alert status="success" variant="solid">
                     <AlertIcon />
@@ -48,27 +54,28 @@ function Winery(){
                     Erro ao cadastrar vinícola
                 </Alert>
             }
-            <div className="inputName">
-                <div className="labelContainer">
-                    <p className="labelText">Nome:</p>
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
+                <div className="title-box">
+                    <Heading as="h3" size="md">
+                        Cadastrar vinícola
+                    </Heading>
                 </div>
-                    <input type="text" maxLength='50' value={name} onChange={(e) => {setName(e.target.value);}}></input>
-            </div>
-            <div className="inputAddress">
-                <div className="labelContainer">
-                    <p className="labelText">Endereço:</p>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="status">Nome:</FormLabel>
+                    <Input id="nome" placeholder="Nome" onChange={(e) => {setName(e.target.value);}} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="status">Endereço:</FormLabel>
+                    <Input id="Endereco" placeholder="Endereço" onChange={(e) => {setAddress(e.target.value);}} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="status">ID do Contrato:</FormLabel>
+                    <Input id="contract" placeholder="ID do Contrato" onChange={(e) => {setContractId(e.target.value);}} />
+                </FormControl>
+                <div className="button-box">
+                    <Button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeRequest()}>CADASTRAR VINÍCOLA</Button>
                 </div>
-                    <input type="text" maxLength='200' value={address} onChange={(e) => {setAddress(e.target.value);}}></input>
-            </div>
-            <div className="inputId">
-                <div className="labelContainer">
-                    <p className="labelText">ID do Contrato:</p>
-                </div>
-                    <input type="text" maxLength='24' value={contractId} onChange={(e) => {setContractId(e.target.value);}}></input>
-            </div>
-            <div className="buttonArea">
-                <button className="buttonCadastrarVinicola" onClick={() => makeRequest()}>CADASTRAR VINÍCOLA</button>
-            </div>
+            </Box>
         </div>
     );
 }
