@@ -28,13 +28,13 @@ function EditContract() {
     const [success, setSuccess] = useState("");
 
     const [contratanteField, setContratanteField] = useState("");
-    const [cpf_cnpjField, setCnpjCpfField] = useState("");
-    const [enderecoField, setEnderecoField] = useState("");
-    const [telefoneField, setTelefoneField] = useState("");
-    const [statusField, setStatusField] = useState("");
-    const [dataInicioField, setDataInicioField] = useState("");
-    const [dataFimField, setDataFimField] = useState("");
-    const [vinicolaField, setVinicolaField] = useState("");
+    const [cpf_cnpjField, setCpfCnpj_field] = useState("");
+    const [enderecoField, setEndereco_field] = useState("");
+    const [telefoneField, setTelefone_field] = useState("");
+    const [statusField, setStatus_field] = useState("");
+    const [dataInicioField, setDataInicio_field] = useState("");
+    const [dataFimField, setDataFim_field] = useState("");
+    const [vinicolaField, setVinicola_field] = useState("");
 
     const [contractId, setId] = useState(String);
 
@@ -47,10 +47,10 @@ function EditContract() {
     }, [local]);
 
 
-    const handleValidationContratante = (event) => {
+    const handleValidationContrante = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        let regexContratante = new RegExp(/^[a-z ,.'-]+$/i);
+        let regexName = new RegExp(/^[a-z ,.'-]+$/i);
 
         if (value.trim() === "") {
             setContratanteField(true);
@@ -58,7 +58,13 @@ function EditContract() {
             return;
         }
 
-        if (!regexContratante.exec(value)) {
+        if (value.length < 10) {
+            setContratanteField(true);
+            setContratante(null);
+            return;
+        }
+
+        if (!regexName.exec(value)) {
             setContratanteField(true);
             setContratante(null);
             return;
@@ -66,148 +72,133 @@ function EditContract() {
 
         setContratanteField(false);
         setContratante(value);
-    };
+    }
+
     const handleValidationCpfCnpj = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        const regexCpfcnpj = new RegExp(/^[a-z ,.'-]+$/i);
+        let regex = new RegExp(/(^\d{3}\.\d{3}\.\d{3}-\d{2}$)|(^\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}$)|(^\d{14}$)|(^\d{11}$)/);
 
         if (value.trim() === "") {
-            setCnpjCpf(true);
-            setCnpjCpfField(null);
-            return;
-        }
-
-        if (!regexCpfcnpj.exec(value)) {
-            setCnpjCpfField(true);
+            setCpfCnpj_field(true);
             setCnpjCpf(null);
             return;
         }
 
-        setCnpjCpf(false);
-        setCnpjCpf(retirarMask(value));
-    };
-    const handleValidationEndereco = (event) => {
-        event.preventDefault();
-        const { value } = event.target;
-        const regexEndereco = new RegExp(/^[a-z ,.'-]+$/i);
-
-        if (value.trim() === "") {
-            setEndereco(true);
-            setEnderecoField(null);
+        if (!regex.exec(value)) {
+            setCpfCnpj_field(true);
+            setCnpjCpf(null);
             return;
         }
 
-        if (!regexEndereco.exec(value)) {
-            setEnderecoField(true);
+        setCpfCnpj_field(false);
+        setCnpjCpf(retirarMask(value));
+    }
+
+    const handleValidationEndereco = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === "") {
+            setEndereco_field(true);
             setEndereco(null);
             return;
         }
 
-        setEndereco(false);
-        setEndereco(retirarMask(value));
-    };
+        setEndereco_field(false);
+        setEndereco(value);
+    }
 
     const handleValidationTelefone = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        const regexTelefone = new RegExp(/^[a-z ,.'-]+$/i);
+        const regexPhone = new RegExp(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}-?[0-9]{4}$/);
 
         if (value.trim() === "") {
-            setTelefone(true);
-            setTelefoneField(null);
-            return;
-        }
-
-        if (!regexTelefone.exec(value)) {
-            setTelefoneField(true);
+            setTelefone_field(true);
             setTelefone(null);
             return;
         }
 
-        setTelefone(false);
-        setTelefone(retirarMask(value));
-    };
-    const handleValidationStatus = (event) => {
-        event.preventDefault();
-        const { value } = event.target;
-        const regexStatus = new RegExp(/^[a-z ,.'-]+$/i);
-
-        if (value.trim() === "") {
-            setStatus(true);
-            setStatusField(null);
+        if (!regexPhone.exec(value)) {
+            setTelefone_field(true);
+            setTelefone(null);
             return;
         }
 
-        if (!regexStatus.exec(value)) {
-            setStatusField(true);
+        setTelefone_field(false);
+        setTelefone(value);
+    }
+
+    const handleValidationStatus = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === "") {
+            setStatus_field(true);
             setStatus(null);
             return;
         }
 
-        setStatus(false);
-        setStatus(retirarMask(value));
-    };
+        setStatus_field(false);
+        setStatus(value);
+    }
+
     const handleValidationDataInicio = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        const regexDatainicio = new RegExp(/^[a-z ,.'-]+$/i);
+        let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
 
         if (value.trim() === "") {
-            setDataInicio(true);
-            setDataInicioField(null);
-            return;
-        }
-
-        if (!regexDatainicio.exec(value)) {
-            setDataInicioField(true);
+            setDataInicio_field(true);
             setDataInicio(null);
             return;
         }
 
-        setDataInicio(false);
-        setDataInicio(retirarMask(value));
-    };
-    const handleValidationDataFim = (event) => {
-        event.preventDefault();
-        const { value } = event.target;
-        const regexDatafim = new RegExp(/^[a-z ,.'-]+$/i);
-
-        if (value.trim() === "") {
-            setDataFim(true);
-            setDataFimField(null);
+        if (!regexDate.exec(value)) {
+            setDataInicio_field(true);
+            setDataInicio(null);
             return;
         }
 
-        if (!regexDatafim.exec(value)) {
-            setDataFimField(true);
+        setDataInicio_field(false);
+        setDataInicio(value);
+    }
+
+    const handleValidationDataFim = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+        let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
+
+        if (value.trim() === "") {
+            setDataFim_field(true);
             setDataFim(null);
             return;
         }
 
-        setDataFim(false);
-        setDataFim(retirarMask(value));
-    };
-    const handleValidationVinicola = (event) => {
-        event.preventDefault();
-        const { value } = event.target;
-        const regexVinicola = new RegExp(/^[a-z ,.'-]+$/i);
-
-        if (value.trim() === "") {
-            setVinicola(true);
-            setVinicolaField(null);
+        if (!regexDate.exec(value)) {
+            setDataFim_field(true);
+            setDataFim(null);
             return;
         }
 
-        if (!regexVinicola.exec(value)) {
-            setVinicolaField(true);
+        setDataFim_field(false);
+        setDataFim(value);
+    }
+
+    const handleValidationVinicola = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === "") {
+            setVinicola_field(true);
             setVinicola(null);
             return;
         }
 
-        setVinicola(false);
-        setVinicola(retirarMask(value));
-    };
+        setVinicola_field(false);
+        setVinicola(value);
+    }
     const makeEdit = async () => {
         if (contractId === null || contractId === undefined) {
             setSuccess(null);
@@ -259,7 +250,7 @@ function EditContract() {
                 <div>
                     <FormControl className="fieldContratante" isRequired>
                         <FormLabel htmlFor="contratante">Contratante: </FormLabel>
-                        <Input isInvalid={contratanteField} id="contratante" placeholder="Contratante" onChange={(e) => { handleValidationContratante(e); }} />
+                        <Input isInvalid={contratanteField} id="contratante" placeholder="Contratante" onChange={(e) => { handleValidationContrante(e); }} />
                     </FormControl>
 
                     <FormControl className="fieldCpfCnpj" isRequired>

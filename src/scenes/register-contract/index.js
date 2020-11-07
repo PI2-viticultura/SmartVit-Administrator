@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import {
     Alert,
     AlertIcon,
@@ -29,6 +30,7 @@ function RegisterContract() {
     const [error, setError] = useState("");
     // eslint-disable-next-line
     const [success, setSuccess] = useState("");
+    const history = useHistory();
 
 
     const [contratante_field, setContratanteField] = useState("");
@@ -41,7 +43,7 @@ function RegisterContract() {
     const [vinicola_field, setVinicola_field] = useState("");
 
     const makeRegister = async () => {
-        await apiAdmin.post("/contract", {
+        await apiAdmin.post("/contracts", {
             contractor: contratante,
             cpf_cnpj,
             address: endereco,
@@ -49,7 +51,9 @@ function RegisterContract() {
             status,
             initialDate: dataInicio,
             endDate: dataFim,
-            winery: vinicola
+            winery: {
+                name: vinicola
+            }
         },
             {
                 "Content-Type": "application/json",
@@ -143,7 +147,7 @@ function RegisterContract() {
         }
 
         setTelefone_field(false);
-        setTelefone(retirarMask(value));
+        setTelefone(value);
     }
 
     const handleValidationStatus = (event) => {
@@ -216,6 +220,11 @@ function RegisterContract() {
         setVinicola(value);
     }
 
+    const pushToReturn = () => {
+        history.push({
+            pathname: "/contracts"
+        });
+    }
 
     return(
         <div className="main">
@@ -278,7 +287,8 @@ function RegisterContract() {
                     </FormControl>
                 </div>
                 <div className="button-box">
-                    <Button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
+                <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => pushToReturn()}>VOLTAR</Button>
+                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
                 </div>
             </Box>
         </div>
