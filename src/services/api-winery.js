@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_URL_WINERY;
+const baseUrl = "https://smartvit-winery-dev.herokuapp.com/";
 
 const apiWinery =  axios.create({
     baseURL: baseUrl,

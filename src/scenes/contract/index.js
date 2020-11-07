@@ -9,6 +9,9 @@ function Contratos() {
     const pushToRegister = async () => {
         history.push("/register");
     };
+    const pushToEdit = async () => {
+        history.push("/contract-edit");
+    };
     const people = [
         {
             contrato: "Siques",

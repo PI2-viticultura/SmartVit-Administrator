@@ -12,9 +12,16 @@ function ListWinerys() {
   const history = useHistory();
   const pushToRegister = async () => {
     history.push("/winery");
-  };
-  
+  };  
   let winerys = [];
+
+  const pushToEdit = (id) => {
+    history.push({
+        pathname: "/winery-edit",
+        state: { isEdit: true}
+    });
+}
+
 
   const getWinerys = async () => {
     await apiWinery.get("/winery",
@@ -24,6 +31,7 @@ function ListWinerys() {
       }).then((res) => {
         winerys = res.data.filter((element) => typeof element.name === "string");
         setData(winerys);
+        console.log(winerys);
         setFiltereData(winerys);
       }).catch((error) => {
       });
@@ -66,6 +74,8 @@ function ListWinerys() {
         }).then((res) => {
           wineryList = res.data.filter((element) => typeof element.name === "string");
           setData(wineryList);
+          console.log(wineryList)
+          setFiltereData(wineryList);
         }).catch((error) => {
         });
     };
@@ -74,6 +84,11 @@ function ListWinerys() {
 
 
   const columns = [
+    {
+      name: "Editar",
+      selector: "id",
+      cell: (row) => <Button className="button-new" variantColor="primary" size="md" w="10%" onClick={() => pushToEdit()}>EDITAR VINÍCOLA</Button>
+    },
     {
       name: "Nome",
       selector: "name",

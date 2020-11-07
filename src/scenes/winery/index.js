@@ -15,7 +15,7 @@ import "../../globals/globalStyle.css";
 function Winery(){
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
-    const [contractId, setContractId] = useState("");
+    const [contract_id, setContractId] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
@@ -23,7 +23,7 @@ function Winery(){
         await apiWinery.post("/winery", {
             name,
             address,
-            contractId
+            contract_id
         },
         {
             "Content-Type": "application/json",

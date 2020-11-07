@@ -8,9 +8,11 @@ import {
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Contratos from "./scenes/contract/index";
+import EditContract from "./scenes/contract-edit/index";
 import RegisterContract from "./scenes/register-contract/index";
 import ListWinerys from "./scenes/list-winery/index";
 import Winery from "./scenes/winery/index";
+import EditWinery from "./scenes/winery-edit/index";
 import ListOrders from "./scenes/orders/index";
 import Users from "./scenes/user-list/index";
 import RegisterUser from "./scenes/user-register/index";
@@ -30,6 +32,9 @@ function App() {
         <Route path="/contracts">
           <Contratos />
         </Route>
+        <Route path="/contract-edit">
+          <EditContract />
+        </Route>
         <Route path="/register">
           <RegisterContract />
         </Route>
@@ -41,6 +46,9 @@ function App() {
         </Route>
         <Route path="/winery">
           <Winery />
+        </Route>
+        <Route path="/winery-edit">
+          <EditWinery />
         </Route>
         <Route path="/user">
           <Users />
