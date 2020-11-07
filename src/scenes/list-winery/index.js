@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import apiWinery from "../../services/api-winery";
 import "./style.css";
+import * as GoIcons from "react-icons/go";
+import {IconContext} from "react-icons";
 import DataTable from "react-data-table-component";
-import {Button, Input, Box} from "@chakra-ui/core";
+import {Button, Input, Box, Text} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListWinerys() {
@@ -82,26 +84,27 @@ function ListWinerys() {
     startWinerys();
   }, []);
 
-
   const columns = [
     {
-      name: "Editar",
+      name: <Text fontSize="md"> Editar</Text>,
       selector: "id",
-      cell: (row) => <Button className="button-new" variantColor="primary" size="md" w="10%" onClick={() => pushToEdit()}>EDITAR VINÍCOLA</Button>
+      cell: (row) => <IconContext.Provider value={{className: 'react-icons'}}>
+       <GoIcons.GoPencil onClick={pushToEdit}/>
+        </IconContext.Provider>
     },
     {
-      name: "Nome",
+      name: <Text fontSize="md"> Nome</Text>,
       selector: "name",
       sortable: true,
     },
     {
-      name: "Status",
+      name: <Text fontSize="md"> Status</Text>,
       cell: (row) => row.active === false ? <span>Desativada</span> : <span>Funcionando</span>,
       selector: "active",
       sortable: true,
     },
     {
-      name: "Ação",
+      name: <Text fontSize="md"> Ação</Text>,
       cell: (row) => row.active === false ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
       selector: "id",
       sortable: true,
