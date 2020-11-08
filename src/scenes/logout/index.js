@@ -1,6 +1,6 @@
 import React from "react";
 import { Redirect } from "react-router-dom";
-import { logout, getToken } from "../../services/auth"
+import { logout, getToken } from "../../services/auth";
 
 
 function Logout() {

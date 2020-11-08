@@ -9,9 +9,9 @@ import {
     Box,
     Link
 } from "@chakra-ui/core";
-import { GrMail, GrLock } from "react-icons/gr"
-import { Link as ReachLink } from "@reach/router"
-import apiUser from "../../services/api-user"
+import { GrMail, GrLock } from "react-icons/gr";
+import { Link as ReachLink } from "@reach/router";
+import apiUser from "../../services/api-user";
 import { login } from "../../services/auth";
 
 import "./style.css";
@@ -53,7 +53,7 @@ function Login() {
                             <Box as={GrLock} />
                         </InputLeftElement>
                         <Input type="email" id="email" aria-describedby="email-helper-text"
-                            placeholder="Email ou Nome de Usuário" onChange={e => { setEmail(e.target.value) }} />
+                            placeholder="Email ou Nome de Usuário" onChange={e => { setEmail(e.target.value); }} />
                     </InputGroup>
                     <InputGroup size="md">
                         <InputLeftElement>
@@ -63,7 +63,7 @@ function Login() {
                             pr="4.5rem"
                             type={show ? "text" : "password"}
                             placeholder="Senha"
-                            onChange={e => { setPassword(e.target.value) }}
+                            onChange={e => { setPassword(e.target.value); }}
                         />
                     </InputGroup>
                     <Button variantColor="#591B2B" className="buttonLogin" onClick={e => makeLogin()}>ENTRAR</Button>
@@ -75,7 +75,7 @@ function Login() {
                 </FormControl>
             </Flex>
         </Flex>
-    )
+    );
 }
 
 export default Login;
