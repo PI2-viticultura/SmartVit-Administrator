@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { isAuthenticated } from "./services/auth";
 import { ThemeProvider } from "@chakra-ui/core";
 

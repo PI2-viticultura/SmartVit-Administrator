@@ -20,7 +20,7 @@ import { useHistory } from "react-router-dom";
 function Login() {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
-    const [show, setShow] = React.useState(false);
+    const [show] = React.useState(false);
     const [role, setRole] = React.useState(String);
     let history = useHistory();
 
