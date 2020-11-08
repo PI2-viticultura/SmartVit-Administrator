@@ -56,10 +56,10 @@ export const SidebarData = [
         cName: "nav-text"
     },
     {
-        title: ' Sair',
-        path: '/logout',
+        title: " Sair",
+        path: "/logout",
         icon: <BiIcons.BiExit />,
-        cName: 'nav-text'
+        cName: "nav-text"
     },
 
 

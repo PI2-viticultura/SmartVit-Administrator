@@ -100,7 +100,7 @@ function App() {
     <BrowserRouter>
       <ThemeProvider>
         <div className="App">
-          { console.log(isAuthenticated()), isAuthenticated() ? (
+          { isAuthenticated() ? (
             <Route component={DefaultContainer} />
           ) : (
             <Route component={LoginContainer} />

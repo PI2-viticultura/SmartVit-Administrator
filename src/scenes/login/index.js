@@ -14,33 +14,32 @@ import { Link as ReachLink } from "@reach/router"
 import apiUser from "../../services/api-user"
 import { login } from "../../services/auth";
 
-import './style.css';
+import "./style.css";
 import { useHistory } from "react-router-dom";
 
 function Login() {
-    const [email, setEmail] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [email, setEmail] = React.useState("");
+    const [password, setPassword] = React.useState("");
     const [show, setShow] = React.useState(false);
     const [role, setRole] = React.useState(String);
     let history = useHistory();
 
 
     const makeLogin = async () => {
-        setRole('admin');
+        setRole("admin");
         await apiUser.post("/login", {
             email,
             password,
             role
         }).then((result) => {
-            console.log(result)
             const { access_token } = result.data;
             login(access_token);
-            history.push("/systems")
+            history.push("/systems");
             window.location.reload(true);
         }, (error) => {
-            console.log(error);
-        })
-    }
+            console.error(error);
+        });
+    };
     return (
         <Flex align="center">
             <Flex className="box-image" bg="green.50" size="100vh" align="center" justify="center"></Flex>
