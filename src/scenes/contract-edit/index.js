@@ -16,9 +16,9 @@ import apiAdmin from "../../services/api-admin";
 import retirarMask from "../../utils/masks";
 
 function EditContract() {
-    const [contratante, setContratante] = useState("");
     const [endereco, setEndereco] = useState("");
     const [cpf_cnpj, setCnpjCpf] = useState("");
+    const [contratante, setContratante] = useState("");
     const [status, setStatus] = useState("");
     const [telefone, setTelefone] = useState("");
     const [dataFim, setDataFim] = useState("");
@@ -45,34 +45,6 @@ function EditContract() {
             setId(local.state.contractId);
         }
     }, [local]);
-
-
-    const handleValidationContrante = (event) => {
-        event.preventDefault();
-        const { value } = event.target;
-        let regexName = new RegExp(/^[a-z ,.'-]+$/i);
-
-        if (value.trim() === "") {
-            setContratanteField(true);
-            setContratante(null);
-            return;
-        }
-
-        if (value.length < 10) {
-            setContratanteField(true);
-            setContratante(null);
-            return;
-        }
-
-        if (!regexName.exec(value)) {
-            setContratanteField(true);
-            setContratante(null);
-            return;
-        }
-
-        setContratanteField(false);
-        setContratante(value);
-    }
 
     const handleValidationEndereco = (event) => {
         event.preventDefault();
@@ -107,6 +79,33 @@ function EditContract() {
 
         setCpfCnpj_field(false);
         setCnpjCpf(retirarMask(value));
+    }
+
+    const handleValidationContrante = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+        let regexName = new RegExp(/^[a-z ,.'-]+$/i);
+
+        if (value.trim() === "") {
+            setContratanteField(true);
+            setContratante(null);
+            return;
+        }
+
+        if (value.length < 10) {
+            setContratanteField(true);
+            setContratante(null);
+            return;
+        }
+
+        if (!regexName.exec(value)) {
+            setContratanteField(true);
+            setContratante(null);
+            return;
+        }
+
+        setContratanteField(false);
+        setContratante(value);
     }
 
     const handleValidationStatus = (event) => {
