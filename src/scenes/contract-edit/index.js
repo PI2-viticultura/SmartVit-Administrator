@@ -84,7 +84,7 @@ function EditContract() {
     const handleValidationContrante = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        let regexName = new RegExp(/^[a-z ,.'-]+$/i);
+        let regexContratante = new RegExp(/^[a-z ,.'-]+$/i);
 
         if (value.trim() === "") {
             setContratanteField(true);
@@ -98,7 +98,7 @@ function EditContract() {
             return;
         }
 
-        if (!regexName.exec(value)) {
+        if (!regexContratante.exec(value)) {
             setContratanteField(true);
             setContratante(null);
             return;
