@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import apiWinery from "../../services/api-winery";
+import * as GoIcons from "react-icons/go";
+import {IconContext} from "react-icons";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Grid, Input} from "@chakra-ui/core";
+import {Button, Text, Grid, Input} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListSensors() {
@@ -14,6 +16,13 @@ function ListSensors() {
 };
 
   let sensors = [];
+
+  const pushToEdit = (id) => {
+    history.push({
+        pathname: "/sensor-edit",
+        state: { isEdit: true}
+    });
+}
 
   const getSensors = async () => {
     await apiWinery.get("/winery",
@@ -46,18 +55,25 @@ function ListSensors() {
 
   const columns = [
     {
-      name: "Nome",
+      name: <Text fontSize="md"> Editar</Text>,
+      selector: "id",
+      cell: (row) => <IconContext.Provider value={{className: 'react-icons'}}>
+       <GoIcons.GoPencil onClick={pushToEdit}/>
+        </IconContext.Provider>
+    },
+    {
+      name: <Text fontSize="md"> Sensor</Text>,
       selector: "name",
       sortable: true,
     },
     {
-      name: "Status",
+      name: <Text fontSize="md"> Status</Text>,
       cell: (row) => row.active === false ? <span>Desativado</span> : <span>Ativado</span>,
       sortable: true,
       selector: "active",
     },
     {
-      name: "Ação",
+      name: <Text fontSize="md"> Ação</Text>,
       cell: (row) => row.active === false ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
       sortable: true,
       selector: "id",
