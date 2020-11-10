@@ -17,12 +17,12 @@ import retirarMask from "../../utils/masks";
 
 function EditContract() {
     const [contratante, setContratante] = useState("");
-    const [cpf_cnpj, setCnpjCpf] = useState("");
     const [endereco, setEndereco] = useState("");
-    const [telefone, setTelefone] = useState("");
+    const [cpf_cnpj, setCnpjCpf] = useState("");
     const [status, setStatus] = useState("");
-    const [dataInicio, setDataInicio] = useState("");
+    const [telefone, setTelefone] = useState("");
     const [dataFim, setDataFim] = useState("");
+    const [dataInicio, setDataInicio] = useState("");
     const [vinicola, setVinicola] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -74,6 +74,20 @@ function EditContract() {
         setContratante(value);
     }
 
+    const handleValidationEndereco = (event) => {
+        event.preventDefault();
+        const { value } = event.target;
+
+        if (value.trim() === "") {
+            setEndereco_field(true);
+            setEndereco(null);
+            return;
+        }
+
+        setEndereco_field(false);
+        setEndereco(value);
+    }
+
     const handleValidationCpfCnpj = (event) => {
         event.preventDefault();
         const { value } = event.target;
@@ -95,18 +109,18 @@ function EditContract() {
         setCnpjCpf(retirarMask(value));
     }
 
-    const handleValidationEndereco = (event) => {
+    const handleValidationStatus = (event) => {
         event.preventDefault();
         const { value } = event.target;
 
         if (value.trim() === "") {
-            setEndereco_field(true);
-            setEndereco(null);
+            setStatus_field(true);
+            setStatus(null);
             return;
         }
 
-        setEndereco_field(false);
-        setEndereco(value);
+        setStatus_field(false);
+        setStatus(value);
     }
 
     const handleValidationTelefone = (event) => {
@@ -130,18 +144,25 @@ function EditContract() {
         setTelefone(value);
     }
 
-    const handleValidationStatus = (event) => {
+    const handleValidationDataFim = (event) => {
         event.preventDefault();
         const { value } = event.target;
+        let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
 
         if (value.trim() === "") {
-            setStatus_field(true);
-            setStatus(null);
+            setDataFim_field(true);
+            setDataFim(null);
             return;
         }
 
-        setStatus_field(false);
-        setStatus(value);
+        if (!regexDate.exec(value)) {
+            setDataFim_field(true);
+            setDataFim(null);
+            return;
+        }
+
+        setDataFim_field(false);
+        setDataFim(value);
     }
 
     const handleValidationDataInicio = (event) => {
@@ -163,27 +184,6 @@ function EditContract() {
 
         setDataInicio_field(false);
         setDataInicio(value);
-    }
-
-    const handleValidationDataFim = (event) => {
-        event.preventDefault();
-        const { value } = event.target;
-        let regexDate = new RegExp(/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]|(?:Jan|Mar|Maio|Jul|Ago|Out|Dez)))\1|(?:(?:29|30)(\/|-|\.)(?:0?[1,3-9]|1[0-2]|(?:Jan|Mar|Abr|Maio|Jun|Jul|Ago|Set|Out|Nov|Dez))\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)(?:0?2|(?:Fev))\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9]|(?:Jan|Fev|Mar|Abr|Mai|Jun|Jul|Ago|Set))|(?:1[0-2]|(?:Out|Nov|Dez)))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/);
-
-        if (value.trim() === "") {
-            setDataFim_field(true);
-            setDataFim(null);
-            return;
-        }
-
-        if (!regexDate.exec(value)) {
-            setDataFim_field(true);
-            setDataFim(null);
-            return;
-        }
-
-        setDataFim_field(false);
-        setDataFim(value);
     }
 
     const handleValidationVinicola = (event) => {
