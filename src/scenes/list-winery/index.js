@@ -24,7 +24,6 @@ function ListWinerys() {
     });
 }
 
-
   const getWinerys = async () => {
     await apiWinery.get("/winery",
       {
@@ -89,7 +88,7 @@ function ListWinerys() {
       name: <Text fontSize="md"> Editar</Text>,
       selector: "id",
       cell: (row) => <IconContext.Provider value={{className: 'react-icons'}}>
-       <GoIcons.GoPencil onClick={pushToEdit()}/>
+       <GoIcons.GoPencil onClick={pushToEdit}/>
         </IconContext.Provider>
     },
     {
