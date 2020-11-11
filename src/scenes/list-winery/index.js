@@ -66,6 +66,7 @@ function ListWinerys() {
         }).then((res) => {
           wineryList = res.data.filter((element) => typeof element.name === "string");
           setData(wineryList);
+          setFiltereData(wineryList);
         }).catch((error) => {
         });
     };
