@@ -81,10 +81,10 @@ function Contratos() {
     return (
         <div className="main">
             <Box className="box-contrato" bg="#FFFFFF" rounded="md" h="35.48125em">
-                <Grid className="grid-header" gap={6}>
-                    <Button className="button-newContract" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</Button>
-                    <Input className="input-newContract" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
-                </Grid>
+                <div className="grid-header" gap={6}>
+                    <button className="button-new" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
+                    <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
+                </div>
             <DataTable
             columns={columns}
             data={data}

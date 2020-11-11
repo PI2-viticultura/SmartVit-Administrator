@@ -3,7 +3,7 @@ import { FaTimes, FaCheck } from "react-icons/fa";
 import apiWinery from "../../services/api-winery";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Grid, Input} from "@chakra-ui/core";
+import {Box, Input} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListSystems() {
@@ -66,18 +66,20 @@ function ListSystems() {
 
   return (
     <div className="main">
-        <Grid className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-          <Button className="button-newWinery" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO SISTEMA</Button>
-          <Input className="input-newWinery" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
-        </Grid>
-      <div className="systems">
-        <DataTable
-          columns={columns}
-          data={data}
-          defaultSortField="name"
-          pagination={true}
-        />
-      </div>
+      <Box className="p-5" bg="#FFFFFF" rounded="md">
+        <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
+          <button className="button-new" onClick={() => pushToRegister()}>NOVO SISTEMA</button>
+          <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
+        </div>
+        <div className="systems">
+          <DataTable
+            columns={columns}
+            data={data}
+            defaultSortField="name"
+            pagination={true}
+          />
+        </div>
+      </Box>
     </div>
   );
 }

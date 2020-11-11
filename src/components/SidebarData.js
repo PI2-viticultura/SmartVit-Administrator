@@ -51,14 +51,8 @@ export const SidebarData = [
     },
     {
         title: " Suporte",
-        path: "/",
+        path: "/support",
         icon: <BiIcons.BiSupport />,
-        cName: "nav-text"
-    },
-    {
-        title: " Monitoramento",
-        path: "/",
-        icon: <VscIcons.VscChecklist />,
         cName: "nav-text"
     },
     {
