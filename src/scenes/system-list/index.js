@@ -64,13 +64,19 @@ function ListSystems() {
     },
   ];
 
+  const header = () => {
+    return (
+      <div className="grid-header" gap={6}>
+        <button className="button-new" onClick={() => pushToRegister()}>NOVO SISTEMA</button>
+        <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
+      </div>
+    )
+  }
+
   return (
     <div className="main">
       <Box className="p-5" bg="#FFFFFF" rounded="md">
-        <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-          <button className="button-new" onClick={() => pushToRegister()}>NOVO SISTEMA</button>
-          <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
-        </div>
+        {header()}
         <div className="systems">
           <DataTable
             columns={columns}
