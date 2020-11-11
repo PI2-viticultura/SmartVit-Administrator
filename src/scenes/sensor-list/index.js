@@ -3,7 +3,7 @@ import { FaTimes, FaCheck } from "react-icons/fa";
 import apiWinery from "../../services/api-winery";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Box, Input} from "@chakra-ui/core";
+import {Box, Input} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListSensors() {

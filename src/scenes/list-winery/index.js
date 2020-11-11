@@ -3,7 +3,7 @@ import { FaTimes, FaCheck } from "react-icons/fa";
 import apiWinery from "../../services/api-winery";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Input, Box} from "@chakra-ui/core";
+import {Input, Box} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListWinerys() {
