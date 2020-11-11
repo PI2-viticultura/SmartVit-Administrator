@@ -70,8 +70,8 @@ function ListSystems() {
         <button className="button-new" onClick={() => pushToRegister()}>NOVO SISTEMA</button>
         <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="main">
