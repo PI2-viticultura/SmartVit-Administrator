@@ -74,6 +74,6 @@
   .formInput {
     position: absolute !important;
     top: 40% !important;
-    margin-top: calc(15% + 105px)!important;
+    margin-top: calc(15% + 105px) !important;
   }
 }

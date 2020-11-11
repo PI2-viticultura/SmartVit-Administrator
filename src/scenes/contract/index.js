@@ -25,8 +25,8 @@ function Contratos() {
         });
     };
 
-    const changeStatus = async (contract_id) => {
-        await apiAdmin.patch("/contract/" + contract_id,
+    const changeStatus = async (contractId) => {
+        await apiAdmin.patch("/contract/" + contractId,
         {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
@@ -37,7 +37,7 @@ function Contratos() {
     };
 
     useEffect(() => {
-        let contracts_list = [];
+        let contractsList = [];
 
         const getContract = async () => {
             await apiAdmin.get("/contracts",
@@ -45,8 +45,8 @@ function Contratos() {
                 "Content-Type": "application/json",
                 "X-Requested-With": "XMLHttpRequest"
             }).then((res) => {
-                contracts_list = res.data.filter((element) => typeof element.contractor === "string");
-                setData(contracts_list);
+                contractsList = res.data.filter((element) => typeof element.contractor === "string");
+                setData(contractsList);
             }).catch((error) => {
             });
         };
