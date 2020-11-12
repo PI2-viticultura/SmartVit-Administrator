@@ -139,3 +139,10 @@ select {
   border-radius: 5px;
   font-weight: bold;
 }
+
+.app-name {
+  margin: 0 auto;
+  color: white;
+  font-weight: bold;
+  font-size: 1.35em;
+}

@@ -8,12 +8,6 @@ import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
     {
-        title: " Home",
-        path: "/",
-        icon: <BiIcons.BiHomeAlt />,
-        cName: "nav-text"
-    },
-    {
         title: " Vinícola",
         path: "/winerys",
         icon: <GiIcons.GiGrapes />,
