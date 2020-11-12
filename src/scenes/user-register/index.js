@@ -20,8 +20,6 @@ import retirarMask from "../../utils/masks";
 import "./style.css";
 
 
-
-
 function RegisterUser() {
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");

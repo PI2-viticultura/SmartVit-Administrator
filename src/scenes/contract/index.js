@@ -80,21 +80,18 @@ function Contratos() {
 
     return (
         <div className="main">
-            
-            <Box className="box-contrato" bg="#FFFFFF" rounded="md" h="35.48125em">
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
                 <div className="grid-header" gap={6}>
-                    <img className="logo_rel" src={require('../../assets/imgs/Logo-Smart-Vit.png')} />
+                    <button className="button-new" size="md" w="30%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
                     <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>                   
                 </div>
-                <button className="button-new" size="md" w="30%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
 
-            <DataTable
-            columns={columns}
-            data={data}
-            defaultSortField="Contratante"
-            pagination={true}
-            />
-            <Divider borderColor="#C4C4C4"/>
+                <DataTable
+                    columns={columns}
+                    data={data}
+                    defaultSortField="Contratante"
+                    pagination={true}
+                />
             </Box >
         </div >
     );
