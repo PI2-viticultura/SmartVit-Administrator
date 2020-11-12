@@ -5,7 +5,7 @@ import * as GoIcons from "react-icons/go";
 import {IconContext} from "react-icons";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Text, Grid, Input} from "@chakra-ui/core";
+import {Text, Box, Input} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListSensors() {

@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { FaTimes, FaCheck } from "react-icons/fa";
 import * as GoIcons from "react-icons/go";
 import {IconContext} from "react-icons";
-import { Box, Button, Input, Text, Grid, Divider} from "@chakra-ui/core";
+import { Box, Input, Text, Divider} from "@chakra-ui/core";
 import "./style.css";
 import apiAdmin from "../../services/api-admin";
 import DataTable from "react-data-table-component";

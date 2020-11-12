@@ -5,7 +5,7 @@ import "./style.css";
 import * as GoIcons from "react-icons/go";
 import {IconContext} from "react-icons";
 import DataTable from "react-data-table-component";
-import {Button, Input, Box, Text} from "@chakra-ui/core";
+import {Input, Box, Text} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListWinerys() {
