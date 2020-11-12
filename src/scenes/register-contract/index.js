@@ -4,7 +4,6 @@ import {
     Alert,
     AlertIcon,
     Box,
-    Button,
     FormControl,
     FormLabel,
     Grid,
@@ -38,7 +37,6 @@ function RegisterContract() {
     const [cpfCnpj_field, setCpfCnpj_field] = useState("");
     const [endereco_field, setEndereco_field] = useState("");
     const [telefone_field, setTelefone_field] = useState("");
-    const [status_field, setStatus_field] = useState("");
     const [dataInicio_field, setDataInicio_field] = useState("");
     const [dataFim_field, setDataFim_field] = useState("");
     const [vinicola_field, setVinicola_field] = useState("");
