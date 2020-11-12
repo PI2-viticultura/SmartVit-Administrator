@@ -6,10 +6,12 @@ import {
     Heading,
     Button,
     FormControl,
+    Select,
     FormLabel,
     Input
 } from "@chakra-ui/core";
 import apiWinery from "../../services/api-winery";
+import apiAdmin from "../../services/api-admin";
 import "../../globals/globalStyle.css";
 
 function Winery(){
@@ -18,12 +20,13 @@ function Winery(){
     const [contractId, setContractId] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [contracts, setContracts] = useState([]);
 
     const makeRequest = async () => {
         await apiWinery.post("/winery", {
             name,
             address,
-            contractId
+            contract_id: contractId
         },
         {
             "Content-Type": "application/json",
@@ -39,6 +42,24 @@ function Winery(){
             setSuccess("");
         });
     };
+
+    React.useEffect(() => {
+        let contractsList = [];
+
+        const getContract = async () => {
+            await apiAdmin.get("/contracts",
+            {
+                "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest"
+            }).then((res) => {
+                contractsList = res.data.filter((element) => typeof element.contractor === "string");
+                setContracts(contractsList);
+                console.log(contractsList);
+            }).catch((error) => {
+            });
+        };
+        getContract();
+    }, []);
 
     return (
         <div className="main">
@@ -69,8 +90,12 @@ function Winery(){
                     <Input id="Endereco" placeholder="Endereço" onChange={(e) => {setAddress(e.target.value);}} />
                 </FormControl>
                 <FormControl isRequired>
-                    <FormLabel htmlFor="status">ID do Contrato:</FormLabel>
-                    <Input id="contract" placeholder="ID do Contrato" onChange={(e) => {setContractId(e.target.value);}} />
+                    <FormLabel htmlFor="contract">Contrato</FormLabel>
+                    <Select id="contract" onChange={(e) => { setContractId(e.target.value); console.log(e.target.value) }}>
+                        {
+                            contracts.map((contract) => <option value={contract._id.$oid}>{contract.contractor}</option>)
+                        }
+                    </Select>
                 </FormControl>
                 <div className="button-box">
                     <Button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeRequest()}>CADASTRAR VINÍCOLA</Button>
