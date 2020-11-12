@@ -42,17 +42,17 @@ function ListOrders() {
     }
   };
 
-  useEffect(() => { 
+  useEffect(() => {
     const getOrderx = async () => {    
-      await apiAdmin.get("/orders",
-          {
-              "Content-Type": "application/json",
-              "X-Requested-With": "XMLHttpRequest"
-          }).then((res) => {
-            setData(res.data);
-            setFiltereData(orders);
-          }).catch((error) => {
-          });
+        await apiAdmin.get("/orders",
+        {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        }).then((res) => {
+          setData(res.data);
+          setFiltereData(res.data);
+        }).catch((error) => {
+        });
     };
 
     getOrderx();
