@@ -183,7 +183,8 @@ function RegisterUser() {
             password,
             type,
             situation,
-            winery_id: wineryId // eslint-disable-next-line camelcase
+            // eslint-disable-next-line camelcase
+            winery_id: wineryId 
         },
             {
                 "Content-Type": "application/json",

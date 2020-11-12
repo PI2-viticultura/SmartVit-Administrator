@@ -28,7 +28,8 @@ function RegisterSystem(){
             latitude,
             longitude,
             status,
-            winery_id: wineryId // eslint-disable-next-line camelcase
+            // eslint-disable-next-line camelcase
+            winery_id: wineryId 
         },
         {
             "Content-Type": "application/json",

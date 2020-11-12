@@ -24,7 +24,8 @@ function RegisterSensor(){
         await apiWinery.post("/sensor", {
             identifier,
             type,
-            system_id: systemId // eslint-disable-next-line camelcase
+            // eslint-disable-next-line camelcase
+            system_id: systemId
         },
         {
             "Content-Type": "application/json",

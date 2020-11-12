@@ -26,7 +26,8 @@ function Winery(){
         await apiWinery.post("/winery", {
             name,
             address,
-            contract_id: contractId // eslint-disable-next-line camelcase
+            // eslint-disable-next-line camelcase
+            contract_id: contractId 
         },
         {
             "Content-Type": "application/json",
