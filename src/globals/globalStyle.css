@@ -126,6 +126,7 @@ select {
 .grid-header {
   display: flex;
   justify-content: space-between;
+  padding: 5px;
 }
 
 .button-new {
@@ -133,4 +134,8 @@ select {
   padding-left: 10px;
   padding-right: 10px;
   white-space: normal;
+  color: white;
+  background-color: #591b2b;
+  border-radius: 5px;
+  font-weight: bold;
 }

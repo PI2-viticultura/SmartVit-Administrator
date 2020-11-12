@@ -3,7 +3,7 @@ import { FaTimes, FaCheck } from "react-icons/fa";
 import apiWinery from "../../services/api-winery";
 import "./style.css";
 import DataTable from "react-data-table-component";
-import {Button, Input, Box} from "@chakra-ui/core";
+import {Input, Box} from "@chakra-ui/core";
 import { useHistory } from "react-router-dom";
 
 function ListWinerys() {
@@ -66,6 +66,7 @@ function ListWinerys() {
         }).then((res) => {
           wineryList = res.data.filter((element) => typeof element.name === "string");
           setData(wineryList);
+          setFiltereData(wineryList);
         }).catch((error) => {
         });
     };
@@ -97,8 +98,8 @@ function ListWinerys() {
     <div className="main">
       <Box className="p-5" bg="#FFFFFF" rounded="md">
         <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-          <Button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVA VINÍCOLA</Button>
-          <Input className="input-newWinery" placeholder="Pesquisar" w="65%" borderColor="#919FA7" onChange={(e) => search(e)}/>
+          <button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVA VINÍCOLA</button>
+          <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7" onChange={(e) => search(e)}/>
         </div>
         <div className="winerys">
           <DataTable

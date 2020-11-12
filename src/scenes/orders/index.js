@@ -93,7 +93,7 @@ function ListOrders() {
                 Solicitações
               </Heading>
           </div>
-          <Input className="input-filter" placeholder="Pesquisar" w="20%" borderColor="#919FA7" onChange={(e) => search(e)}/>
+          <Input className="input-filter" placeholder="Pesquisar" w="50%" borderColor="#919FA7" onChange={(e) => search(e)}/>
           <DataTable
             columns={columns}
             data={filtereData}

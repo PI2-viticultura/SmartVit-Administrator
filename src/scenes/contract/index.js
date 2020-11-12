@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import { Box, Button, Input, Grid, Divider} from "@chakra-ui/core";
+import { Box, Input, Divider} from "@chakra-ui/core";
 import "./style.css";
 import apiAdmin from "../../services/api-admin";
 import DataTable from "react-data-table-component";
@@ -9,24 +9,24 @@ import DataTable from "react-data-table-component";
 
 function Contratos() {
     const [data, setData] = useState([]);
-    let contracts = [];
     const history = useHistory();
+    let contracts = [];
 
 
     const makeGetContract = async () => {
         await apiAdmin.get("/contracts",
-            {
-                "Content-Type": "application/json",
-                "X-Requested-With": "XMLHttpRequest"
-            }).then((res) => {
-                contracts = res.data.filter((element) => typeof element.contratante === "string");
-                setData(contracts);
-            }).catch((error) => {
-            });
+        {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        }).then((res) => {
+            contracts = res.data.filter((element) => typeof element.contractor === "string");
+            setData(contracts);
+        }).catch((error) => {
+        });
     };
 
-    const changeStatus = async (contract_id) => {
-        await this.api.patch("/contract/" + contract_id,
+    const changeStatus = async (contractId) => {
+        await apiAdmin.patch("/contract/" + contractId,
         {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
@@ -37,8 +37,21 @@ function Contratos() {
     };
 
     useEffect(() => {
-      makeGetContract();
-    });
+        let contractsList = [];
+
+        const getContract = async () => {
+            await apiAdmin.get("/contracts",
+            {
+                "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest"
+            }).then((res) => {
+                contractsList = res.data.filter((element) => typeof element.contractor === "string");
+                setData(contractsList);
+            }).catch((error) => {
+            });
+        };
+        getContract();
+    }, []);
 
     const pushToRegister = () => {
         history.push({
@@ -48,19 +61,14 @@ function Contratos() {
 
     const columns = [
     {
-      name: "Contrato",
-      selector: "contrato",
-      sortable: true,
-    },
-    {
       name: "Contratante",
       sortable: true,
-      selector: "contratante",
+      selector: "contractor",
     },
     {
       name: "Data",
       sortable: true,
-      selector: "data",
+      selector: "initialDate",
     },
     {
       name: "Cancelar Contrato?",
@@ -73,10 +81,10 @@ function Contratos() {
     return (
         <div className="main">
             <Box className="box-contrato" bg="#FFFFFF" rounded="md" h="35.48125em">
-                <Grid className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-                    <Button className="button-newContract" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</Button>
-                    <Input className="input-newContract" placeholder="Basic usage" w="65%" borderColor="#919FA7"/>
-                </Grid>
+                <div className="grid-header" gap={6}>
+                    <button className="button-new" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
+                    <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
+                </div>
             <DataTable
             columns={columns}
             data={data}
