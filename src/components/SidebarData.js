@@ -38,6 +38,12 @@ export const SidebarData = [
         cName: "nav-text"
     },
     {
+        title: " Usuários",
+        path: "/user",
+        icon: <HiIcons.HiUser />,
+        cName: "nav-text"
+    },
+    {
         title: " Solicitações",
         path: "/orders",
         icon: <GoIcons.GoRequestChanges />,
@@ -45,14 +51,8 @@ export const SidebarData = [
     },
     {
         title: " Suporte",
-        path: "/",
+        path: "/support",
         icon: <BiIcons.BiSupport />,
-        cName: "nav-text"
-    },
-    {
-        title: " Monitoramento",
-        path: "/",
-        icon: <VscIcons.VscChecklist />,
         cName: "nav-text"
     },
     {

@@ -112,8 +112,8 @@ function ListWinerys() {
     <div className="main">
       <Box className="p-5" bg="#FFFFFF" rounded="md">
         <div className="grid-header" templateColumns="repeat(2, 1fr)" gap={6}>
-          <Button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVA VINÍCOLA</Button>
-          <Input className="input-newWinery" placeholder="Pesquisar" w="65%" borderColor="#919FA7" onChange={(e) => search(e)}/>
+          <button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVA VINÍCOLA</button>
+          <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7" onChange={(e) => search(e)}/>
         </div>
         <div className="winerys">
           <DataTable
