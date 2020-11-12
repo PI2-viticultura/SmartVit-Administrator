@@ -11,9 +11,11 @@ import {
     Input,
     InputGroup,
     InputRightElement,
+    Select
 } from "@chakra-ui/core";
 
 import apiUser from "../../services/api-user";
+import apiWinery from "../../services/api-winery";
 import retirarMask from "../../utils/masks";
 import "./style.css";
 
@@ -27,6 +29,8 @@ function RegisterUser() {
     const [password, setPassword] = useState("");
     const [type, setType] = useState("");
     const [situation, setSituation] = useState("");
+    const [wineryId, setWineryId] = useState("");
+    const [winery, setWinery] = useState([]);
     // eslint-disable-next-line no-unused-vars
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -41,6 +45,23 @@ function RegisterUser() {
     const [show, setShow] = React.useState(false);
     const handleClick = () => setShow(!show);
 
+
+    React.useEffect(() => {
+        let wineryList = [];
+
+        const getWinery = async () => {
+            await apiWinery.get("/winery",
+            {
+                "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest"
+            }).then((res) => {
+                wineryList = res.data.filter((element) => typeof element.name === "string");
+                setWinery(wineryList);
+            }).catch((error) => {
+            });
+        };
+        getWinery();
+    }, []);
 
     const handleValidationName = (event) => {
         event.preventDefault();
@@ -68,6 +89,7 @@ function RegisterUser() {
         setNamefield(false);
         setName(value);
     };
+
     const handleValidationCpf = (event) => {
         event.preventDefault();
         const { value } = event.target;
@@ -162,7 +184,8 @@ function RegisterUser() {
             email,
             password,
             type,
-            situation
+            situation,
+            winery_id: wineryId
         },
             {
                 "Content-Type": "application/json",
@@ -223,6 +246,14 @@ function RegisterUser() {
                     <FormControl className="fieldSituation" isRequired>
                         <FormLabel htmlFor="situation">Situação</FormLabel>
                         <Input isInvalid={situationField} id="situation" placeholder="Situação" onChange={(e) => { handleValidationSituation(e); }} />
+                    </FormControl>
+                    <FormControl isRequired>
+                        <FormLabel htmlFor="winery">Vinícola</FormLabel>
+                        <Select id="winery" onChange={(e) => { setWineryId(e.target.value); console.log(e.target.value) }}>
+                            {
+                                winery.map((win) => <option key={win._id.$oid} value={win._id.$oid}>{win.name}</option>)
+                            }
+                        </Select>
                     </FormControl>
                 </div>
                 <div className="button-box">
