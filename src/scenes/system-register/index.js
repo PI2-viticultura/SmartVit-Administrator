@@ -2,24 +2,33 @@ import React, {useState} from "react";
 import {
     Alert,
     AlertIcon,
+    FormControl,
+    Select,
+    FormLabel,
+    Box,
+    Heading,
+    Input
 } from "@chakra-ui/core";
-import api from "../../services/api-winery";
+import apiWinery from "../../services/api-winery";
 import "../../globals/globalStyle.css";
 
 function RegisterSystem(){
     const [latitude, setLatitude] = useState("");
+    const [name, setName] = useState("");
     const [longitude, setLongitude] = useState("");
     const [status, setStatus] = useState("");
     const [wineryId, setWineryId] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [winery, setWinery] = useState([]);
 
     const makeRequest = async () => {
-        await api.post("/winery", {
+        await apiWinery.post("/system", {
+            name,
             latitude,
             longitude,
             status,
-            wineryId
+            winery_id: wineryId
         },
         {
             "Content-Type": "application/json",
@@ -37,6 +46,23 @@ function RegisterSystem(){
         });
     };
 
+    React.useEffect(() => {
+        let wineryList = [];
+
+        const getWinery = async () => {
+            await apiWinery.get("/winery",
+            {
+                "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest"
+            }).then((res) => {
+                wineryList = res.data.filter((element) => typeof element.name === "string");
+                setWinery(wineryList);
+            }).catch((error) => {
+            });
+        };
+        getWinery();
+    }, []);
+
     return (
         <div className="main">
             {success === "success" &&
@@ -51,33 +77,43 @@ function RegisterSystem(){
                     Erro ao cadastrar sistema
                 </Alert>
             }
-            <div className="inputLatitude">
-                <div className="labelContainer">
-                    <p className="labelText">Latitude:</p>
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
+                <div className="title-box">
+                    <Heading as="h3" size="md">
+                        Cadastrar sistema
+                    </Heading>
                 </div>
-                    <input type="text" maxLength='50' value={latitude} onChange={(e) => {setLatitude(e.target.value);}}></input>
-            </div>
-            <div className="inputLongitude">
-                <div className="labelContainer">
-                    <p className="labelText">Longitude:</p>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="name">Name:</FormLabel>
+                    <Input id="name" placeholder="Name" onChange={(e) => {setName(e.target.value);}} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="latitude">Latitude:</FormLabel>
+                    <Input id="latitude" type="number" placeholder="Latitude" onChange={(e) => {setLatitude(e.target.value);}} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="longitude">Longitude:</FormLabel>
+                    <Input id="longitude" type="number" placeholder="Longitude" onChange={(e) => {setLongitude(e.target.value);}} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="winery">Status</FormLabel>
+                    <Select id="status" onChange={(e) => { setStatus(e.target.value); console.log(e.target.value) }}>
+                        <option value="ativo">Ativo</option>
+                        <option value="ativo">Desativo</option>
+                    </Select>
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="winery">Vinícola</FormLabel>
+                    <Select id="winery" onChange={(e) => { setWineryId(e.target.value); console.log(e.target.value) }}>
+                        {
+                            winery.map((win) => <option key={win._id.$oid} value={win._id.$oid}>{win.name}</option>)
+                        }
+                    </Select>
+                </FormControl>
+                <div className="buttonArea">
+                    <button className="buttonCadastrarVinicola" onClick={() => makeRequest()}>CADASTRAR SISTEMA</button>
                 </div>
-                    <input type="text" maxLength='50' value={longitude} onChange={(e) => {setLongitude(e.target.value);}}></input>
-            </div>
-            <div className="inputStatus">
-                <div className="labelContainer">
-                    <p className="labelText">Status:</p>
-                </div>
-                    <input type="text" maxLength='50' value={status} onChange={(e) => {setStatus(e.target.value);}}></input>
-            </div>
-            <div className="inputId">
-                <div className="labelContainer">
-                    <p className="labelText">Id Vinícola:</p>
-                </div>
-                    <input type="text" maxLength='50' value={wineryId} onChange={(e) => {setWineryId(e.target.value);}}></input>
-            </div>
-            <div className="buttonArea">
-                <button className="buttonCadastrarVinicola" onClick={() => makeRequest()}>CADASTRAR SISTEMA</button>
-            </div>
+            </Box>
         </div>
     );
 }

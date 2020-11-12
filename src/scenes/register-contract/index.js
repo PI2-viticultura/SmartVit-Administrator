@@ -10,6 +10,7 @@ import {
     Grid,
     Heading,
     Input,
+    Select
 } from "@chakra-ui/core";
 
 import apiAdmin from "../../services/api-admin";
@@ -262,10 +263,10 @@ function RegisterContract() {
                     </Grid>
                     <FormControl isRequired>
                         <FormLabel htmlFor="status">Status</FormLabel>
-                        <select id="status" onChange={(e) => { handleValidationStatus(e); }}>
+                        <Select id="status" onChange={(e) => { handleValidationStatus(e); }}>
                             <option value="ativo">Ativo</option>
                             <option value="inativo">Inativo</option>
-                        </select>
+                        </Select>
                     </FormControl>
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field-dataInicio" isRequired>
