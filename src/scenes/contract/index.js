@@ -80,11 +80,14 @@ function Contratos() {
 
     return (
         <div className="main">
+            
             <Box className="box-contrato" bg="#FFFFFF" rounded="md" h="35.48125em">
                 <div className="grid-header" gap={6}>
-                    <button className="button-new" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
-                    <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
+                    <img className="logo_rel" src={require('../../assets/imgs/Logo-Smart-Vit.png')} />
+                    <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>                   
                 </div>
+                <button className="button-new" size="md" w="30%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
+
             <DataTable
             columns={columns}
             data={data}

@@ -22,7 +22,7 @@ function RegisterContract() {
     const [cpf_cnpj, setCnpjCpf] = useState("");
     const [endereco, setEndereco] = useState("");
     const [telefone, setTelefone] = useState("");
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("ativo");
     const [dataInicio, setDataInicio] = useState("");
     const [dataFim, setDataFim] = useState("");
     const [vinicola, setVinicola] = useState("");
@@ -51,7 +51,9 @@ function RegisterContract() {
             status,
             initialDate: dataInicio,
             endDate: dataFim,
-            winery: vinicola
+            winery: {
+                name: vinicola
+            }
         },
             {
                 "Content-Type": "application/json",
@@ -151,14 +153,7 @@ function RegisterContract() {
     const handleValidationStatus = (event) => {
         event.preventDefault();
         const { value } = event.target;
-
-        if (value.trim() === "") {
-            setStatus_field(true);
-            setStatus(null);
-            return;
-        }
-
-        setStatus_field(false);
+        console.log(value);
         setStatus(value);
     }
 
@@ -267,7 +262,10 @@ function RegisterContract() {
                     </Grid>
                     <FormControl isRequired>
                         <FormLabel htmlFor="status">Status</FormLabel>
-                        <Input isInvalid={status_field} id="status" placeholder="Status" onChange={(e) => { handleValidationStatus(e); }} />
+                        <select id="status" onChange={(e) => { handleValidationStatus(e); }}>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </select>
                     </FormControl>
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field-dataInicio" isRequired>
@@ -285,8 +283,8 @@ function RegisterContract() {
                     </FormControl>
                 </div>
                 <div className="button-box">
-                <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => pushToReturn()}>VOLTAR</Button>
-                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
+                    <button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => pushToReturn()}>VOLTAR</button>
+                    <button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</button>
                 </div>
             </Box>
         </div>
