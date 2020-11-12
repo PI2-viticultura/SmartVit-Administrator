@@ -46,6 +46,7 @@ function EditUser() {
 
     const location = useLocation();
 
+
     useEffect(() => {
         if (location.state.isEdit) {
             setId(location.state.userId);
@@ -215,17 +216,17 @@ function EditUser() {
                 <div>
                     <FormControl className="fieldName" isRequired>
                         <FormLabel htmlFor="name">Nome</FormLabel>
-                        <Input isInvalid={nameField} name="name" placeholder="Nome" onChange={(e) => { handleValidationName(e); }} />
+                        <Input isInvalid={nameField} name="name" value={location.state.user.name} placeholder="Nome" onChange={(e) => { handleValidationName(e); }} />
                     </FormControl>
 
                     <FormControl className="fieldCpf" isRequired>
                         <FormLabel htmlFor="cpf">CPF</FormLabel>
-                        <Input isInvalid={cpfField} id="cpf" placeholder="CPF" onChange={(e) => { handleValidationCpf(e); }} />
+                        <Input isInvalid={cpfField} id="cpf" value={location.state.user.cpf} placeholder="CPF" onChange={(e) => { handleValidationCpf(e); }} />
                     </FormControl>
 
                     <FormControl className="fieldEmail" isRequired>
                         <FormLabel htmlFor="email">Email</FormLabel>
-                        <Input isInvalid={emailField} id="email" placeholder="E-mail" onChange={(e) => { handleValidationEmail(e); }} />
+                        <Input isInvalid={emailField} id="email" value={location.state.user.email} placeholder="E-mail" onChange={(e) => { handleValidationEmail(e); }} />
                     </FormControl>
 
                     <FormControl className="fieldPassword" isRequired>
@@ -241,11 +242,11 @@ function EditUser() {
                     </FormControl>
                     <FormControl className="fieldType" isRequired>
                         <FormLabel htmlFor="type">Tipo</FormLabel>
-                        <Input isInvalid={typeField} id="type" placeholder="Tipo" onChange={(e) => { handleValidationType(e); }} />
+                        <Input isInvalid={typeField} id="type" value={location.state.user.type} placeholder="Tipo" onChange={(e) => { handleValidationType(e); }} />
                     </FormControl>
                     <FormControl className="fieldSituation" isRequired>
                         <FormLabel htmlFor="situation">Situação</FormLabel>
-                        <Input isInvalid={situationField} id="situation" placeholder="Situação" onChange={(e) => { handleValidationSituation(e); }} />
+                        <Input isInvalid={situationField} id="situation" value={location.state.user.situation} placeholder="Situação" onChange={(e) => { handleValidationSituation(e); }} />
                     </FormControl>
                 </div>
                 <div className="button-box">
