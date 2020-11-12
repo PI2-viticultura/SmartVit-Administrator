@@ -22,7 +22,7 @@ function ListSensors() {
         pathname: "/sensor-edit",
         state: { isEdit: true}
     });
-}
+  };
 
   const getSensors = async () => {
     await apiWinery.get("/winery",
@@ -57,7 +57,7 @@ function ListSensors() {
     {
       name: <Text fontSize="md"> Editar</Text>,
       selector: "id",
-      cell: (row) => <IconContext.Provider value={{className: 'react-icons'}}>
+      cell: (row) => <IconContext.Provider value={{className: "react-icons"}}>
        <GoIcons.GoPencil onClick={pushToEdit}/>
         </IconContext.Provider>
     },

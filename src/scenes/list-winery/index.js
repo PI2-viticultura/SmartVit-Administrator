@@ -22,7 +22,7 @@ function ListWinerys() {
         pathname: "/winery-edit",
         state: { isEdit: true}
     });
-}
+  };
 
   const getWinerys = async () => {
     await apiWinery.get("/winery",
@@ -32,7 +32,6 @@ function ListWinerys() {
       }).then((res) => {
         winerys = res.data.filter((element) => typeof element.name === "string");
         setData(winerys);
-        console.log(winerys);
         setFiltereData(winerys);
       }).catch((error) => {
       });
@@ -75,7 +74,6 @@ function ListWinerys() {
         }).then((res) => {
           wineryList = res.data.filter((element) => typeof element.name === "string");
           setData(wineryList);
-          console.log(wineryList)
           setFiltereData(wineryList);
         }).catch((error) => {
         });
@@ -87,7 +85,7 @@ function ListWinerys() {
     {
       name: <Text fontSize="md"> Editar</Text>,
       selector: "id",
-      cell: (row) => <IconContext.Provider value={{className: 'react-icons'}}>
+      cell: (row) => <IconContext.Provider value={{className: "react-icons"}}>
        <GoIcons.GoPencil onClick={pushToEdit}/>
         </IconContext.Provider>
     },

@@ -53,13 +53,13 @@ function Contratos() {
           pathname: "/winery-edit",
           state: { isEdit: true}
       });
-  }
+    };
 
     const columns = [
     {
       name: <Text fontSize="md"> Editar</Text>,
       selector: "id",
-      cell: (row) => <IconContext.Provider value={{className: 'react-icons'}}>
+      cell: (row) => <IconContext.Provider value={{className: "react-icons"}}>
       <GoIcons.GoPencil onClick={pushToEdit}/>
       </IconContext.Provider>
     },
