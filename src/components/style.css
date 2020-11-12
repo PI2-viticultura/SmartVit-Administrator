@@ -6,12 +6,12 @@
   align-items: center;
   position: fixed;
   width: 100%;
-  top: 0px;
+  top: 0;
   z-index: 99999999;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
-body{
+body {
   padding-top: 50px;
 }
 
@@ -21,7 +21,7 @@ body{
   background: none;
 }
 
-.logo_nav{
+.logo_nav {
   width: 28px;
   position: absolute;
   top: 5px;

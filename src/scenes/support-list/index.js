@@ -18,7 +18,6 @@ function ListSupport() {
           "X-Requested-With": "XMLHttpRequest"
         }).then((res) => {
           support = res.data;
-          console.log(support)
           setData(support);
         }).catch((error) => {
         });
@@ -45,7 +44,7 @@ function ListSupport() {
     },
     {
       name: "Ação",
-      cell: (row) => row.active === false ? <button className="nao-atendido" onClick={() => console.log(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => console.log(row._id["$oid"])}> <FaCheck/></button>,
+      cell: (row) => row.active === false ? <button className="nao-atendido"> <FaTimes/></button> : <button className="atendido"> <FaCheck/></button>,
       sortable: true,
       selector: "id",
       

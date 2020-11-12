@@ -26,7 +26,7 @@ function RegisterSensor(){
         await apiWinery.post("/sensor", {
             identifier,
             type,
-            system_id: systemId
+            system_id: systemId // eslint-disable-next-line camelcase
         },
         {
             "Content-Type": "application/json",
@@ -90,7 +90,7 @@ function RegisterSensor(){
                 </FormControl>
                 <FormControl isRequired>
                     <FormLabel htmlFor="winery">Sistema</FormLabel>
-                    <Select id="system" onChange={(e) => { setSystemId(e.target.value); console.log(e.target.value) }}>
+                    <Select id="system" onChange={(e) => { setSystemId(e.target.value); }}>
                         {
                             systems.map((system) => <option key={system._id.$oid} value={system._id.$oid}>{system.name}</option>)
                         }

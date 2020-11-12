@@ -183,7 +183,7 @@ function RegisterUser() {
             password,
             type,
             situation,
-            winery_id: wineryId
+            winery_id: wineryId // eslint-disable-next-line camelcase
         },
             {
                 "Content-Type": "application/json",
@@ -247,7 +247,7 @@ function RegisterUser() {
                     </FormControl>
                     <FormControl isRequired>
                         <FormLabel htmlFor="winery">Vinícola</FormLabel>
-                        <Select id="winery" onChange={(e) => { setWineryId(e.target.value); console.log(e.target.value) }}>
+                        <Select id="winery" onChange={(e) => { setWineryId(e.target.value); }}>
                             {
                                 winery.map((win) => <option key={win._id.$oid} value={win._id.$oid}>{win.name}</option>)
                             }

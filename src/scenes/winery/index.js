@@ -26,7 +26,7 @@ function Winery(){
         await apiWinery.post("/winery", {
             name,
             address,
-            contract_id: contractId
+            contract_id: contractId // eslint-disable-next-line camelcase
         },
         {
             "Content-Type": "application/json",
@@ -54,7 +54,6 @@ function Winery(){
             }).then((res) => {
                 contractsList = res.data.filter((element) => typeof element.contractor === "string");
                 setContracts(contractsList);
-                console.log(contractsList);
             }).catch((error) => {
             });
         };
@@ -91,7 +90,7 @@ function Winery(){
                 </FormControl>
                 <FormControl isRequired>
                     <FormLabel htmlFor="contract">Contrato</FormLabel>
-                    <Select id="contract" onChange={(e) => { setContractId(e.target.value); console.log(e.target.value) }}>
+                    <Select id="contract" onChange={(e) => { setContractId(e.target.value); }}>
                         {
                             contracts.map((contract) => <option value={contract._id.$oid}>{contract.contractor}</option>)
                         }

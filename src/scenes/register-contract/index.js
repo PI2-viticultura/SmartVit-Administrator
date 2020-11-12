@@ -154,7 +154,6 @@ function RegisterContract() {
     const handleValidationStatus = (event) => {
         event.preventDefault();
         const { value } = event.target;
-        console.log(value);
         setStatus(value);
     }
 

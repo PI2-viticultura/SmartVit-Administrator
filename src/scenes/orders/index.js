@@ -23,7 +23,6 @@ function ListOrders() {
           setData(orders);
           setFiltereData(orders);
         }).catch((error) => {
-          console.log("Erros:" + error);
         });
   };
 
