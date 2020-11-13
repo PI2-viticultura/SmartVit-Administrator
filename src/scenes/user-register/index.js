@@ -184,7 +184,7 @@ function RegisterUser() {
             type,
             situation,
             // eslint-disable-next-line camelcase
-            winery_id: wineryId 
+            winery: wineryId 
         },
             {
                 "Content-Type": "application/json",

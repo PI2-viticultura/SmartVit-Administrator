@@ -35,9 +35,6 @@ function Winery(){
         }).then((res) => {
             setError("");
             setSuccess("success");
-            setName("");
-            setAddress("");
-            setContractId("");
         }).catch((error) => {
             setError("error");
             setSuccess("");
