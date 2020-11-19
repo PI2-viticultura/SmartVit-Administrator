@@ -16,19 +16,19 @@ function ListSensors() {
   let sensors = [];
 
   const getSensors = async () => {
-    await apiWinery.get("/winery",
+    await apiWinery.get("/sensor",
       {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
       }).then((res) => {
-        sensors = res.data.filter((element) => typeof element.name === "string");
+        sensors = res.data.filter((element) => typeof element.identifier === "string");
         setData(sensors);
       }).catch((error) => {
       });
   };
 
   const changeStatus = async (id) => {
-    await apiWinery.patch("/winery/" + id,
+    await apiWinery.patch("/sensor/" + id,
       {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
@@ -46,8 +46,8 @@ function ListSensors() {
 
   const columns = [
     {
-      name: "Nome",
-      selector: "name",
+      name: "Identificador",
+      selector: "identifier",
       sortable: true,
     },
     {

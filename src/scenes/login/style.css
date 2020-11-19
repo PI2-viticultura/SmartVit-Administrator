@@ -1,6 +1,10 @@
 .box-login {
   width: 30% !important;
-  background-color: #fafafa !important;
+  background-color: #fafafa;
+}
+
+.login-container {
+  margin-top: -50px;
 }
 
 .box-image {

@@ -73,22 +73,19 @@ function Users() {
                     <Button className="button-new" variantColor="primary" size="md" w="40%" onClick={() => pushToRegister()}>NOVO USUÁRIO</Button>
                     <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
                 </div>
-                <Grid className="column-name" templateColumns="repeat(5, 1fr)">
+                <Grid className="column-name" templateColumns="repeat(4, 1fr)">
                     <Text fontSize="1em" color="gray">Nome</Text>
                     <Text fontSize="1em" color="gray">Email</Text>
-                    <Text fontSize="1em" color="gray">Telefone</Text>
-                    <Text fontSize="1em" color="gray">Vinícola</Text>
+                    <Text fontSize="1em" color="gray"></Text>
                     <Text fontSize="1em" color="gray">Ação</Text>
                 </Grid>
                 <Divider borderColor="#615B5B" />
                 <Scrollbars style={{ height: "30vh" }}>
                     {users.map(user => (
                         <div>
-                            <Grid className="column-name-item" templateColumns="repeat(5, 1fr)">
+                            <Grid className="column-name-item" templateColumns="repeat(3, 1fr)">
                                 <Text fontSize="1em" color="gray">{user.name}</Text>
                                 <Text fontSize="1em" color="gray" className="email">{user.email}</Text>
-                                <Text fontSize="1em" color="gray">40028922</Text>
-                                <Text fontSize="1em" color="gray">Fix after</Text>
                                 <Grid templateColumns="repeat(2, 1fr)">
                                     <Button className="btn-edit" onClick={() => pushToEdit(user._id.$oid)}>Editar</Button>
                                     <Button className="btn-del" onClick={() => changeStatus(user._id.$oid)}> {user.situation === 0 ? "Ativar" : "Desativar"}</Button>

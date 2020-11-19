@@ -1,31 +1,31 @@
 import React, {useState} from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import {
     Alert,
     AlertIcon,
+    FormControl,
+    Select,
+    FormLabel,
+    Box,
+    Heading,
+    Input
 } from "@chakra-ui/core";
-import api from "../../services/api-winery";
+import apiWinery from "../../services/api-winery";
 import "../../globals/globalStyle.css";
 
 function RegisterSensor(){
-    const [location, setLocation] = useState("");
     const [identifier, setIdentifier] = useState("");
     const [type, setType] = useState("");
-    const [situation, setSituation] = useState("");
-    const [lastRegister, setLastRegister] = useState("");
     const [systemId, setSystemId] = useState("");
+    const [systems, setSystems] = useState([]);
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
     const makeRequest = async () => {
-        await api.post("/winery", {
-           location,
-           identifier,
-           type,
-           situation,
-           lastRegister,
-           systemId
+        await apiWinery.post("/sensor", {
+            identifier,
+            type,
+            // eslint-disable-next-line camelcase
+            system_id: systemId
         },
         {
             "Content-Type": "application/json",
@@ -33,17 +33,31 @@ function RegisterSensor(){
         }).then((res) => {
             setError("");
             setSuccess("success");
-            setLocation("");
             setIdentifier("");
             setType("");
-            setSituation("");
-            setLastRegister("");
             setSystemId("");
         }).catch((error) => {
             setError("error");
             setSuccess("");
         });
     };
+
+    React.useEffect(() => {
+        let systemList = [];
+
+        const getSystem = async () => {
+            await apiWinery.get("/system",
+            {
+                "Content-Type": "application/json",
+                "X-Requested-With": "XMLHttpRequest"
+            }).then((res) => {
+                systemList = res.data.filter((element) => typeof element.name === "string");
+                setSystems(systemList);
+            }).catch((error) => {
+            });
+        };
+        getSystem();
+    }, []);
 
     return (
         <div className="main">
@@ -59,47 +73,32 @@ function RegisterSensor(){
                     Erro ao cadastrar sensor
                 </Alert>
             }
-            <div className="inputLocation">
-                <div className="labelContainer">
-                    <p className="labelText">Localização:</p>
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
+                <div className="title-box">
+                    <Heading as="h3" size="md">
+                        Cadastrar sensor
+                    </Heading>
                 </div>
-                    <input type="text" maxLength='50' value={location} onChange={(e) => {setLocation(e.target.value);}}></input>
-            </div>
-            <div className="inputIdentifier">
-                <div className="labelContainer">
-                    <p className="labelText">Identificador:</p>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="identificador">Identificador:</FormLabel>
+                    <Input id="identificador" placeholder="Identificador" onChange={(e) => {setIdentifier(e.target.value);}} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="tipo">Tipo:</FormLabel>
+                    <Input id="tipo" placeholder="Tipo" onChange={(e) => {setType(e.target.value);}} />
+                </FormControl>
+                <FormControl isRequired>
+                    <FormLabel htmlFor="winery">Sistema</FormLabel>
+                    <Select id="system" onChange={(e) => { setSystemId(e.target.value); }}>
+                        {
+                            systems.map((system) => <option key={system._id.$oid} value={system._id.$oid}>{system.name}</option>)
+                        }
+                    </Select>
+                </FormControl>
+                <div className="buttonArea">
+                    <button className="buttonCadastrarVinicola" onClick={() => makeRequest()}>CADASTRAR SENSOR</button>
                 </div>
-                    <input type="text" maxLength='50' value={identifier} onChange={(e) => {setIdentifier(e.target.value);}}></input>
-            </div>
-            <div className="inputSituation">
-                <div className="labelContainer">
-                    <p className="labelText">Situação:</p>
-                </div>
-                    <input type="text" maxLength='50' value={situation} onChange={(e) => {setSituation(e.target.value);}}></input>
-            </div>
-            <div className="inputType">
-                <div className="labelContainer">
-                    <p className="labelText">Tipo:</p>
-                </div>
-                    <input type="text" maxLength='50' value={type} onChange={(e) => {setType(e.target.value);}}></input>
-            </div>
-            <div className="inputId">
-                <div className="labelContainer">
-                    <p className="labelText">Id Sistema:</p>
-                </div>
-                    <input type="text" maxLength='50' value={systemId} onChange={(e) => {setSystemId(e.target.value);}}></input>
-            </div>
-            <div className="periodContainer">
-                <div className="periodInnerContainer">
-                    <div className="inputMensagem periodInput">
-                        Último Registro <br/>
-                        <DatePicker selected={lastRegister} onChange={(date) => {setLastRegister(date);}}> </DatePicker>
-                    </div>
-                </div>
-            </div>
-            <div className="buttonArea">
-                <button className="buttonCadastrarVinicola" onClick={() => makeRequest()}>CADASTRAR SENSOR</button>
-            </div>
+            </Box>
         </div>
     );
 }
