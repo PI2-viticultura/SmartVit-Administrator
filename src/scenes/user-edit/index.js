@@ -235,7 +235,7 @@ function EditUser() {
 
     return (
         <div className="main">
-            {console.log(location.state.user), success === "success" ?
+            {success === "success" ?
                 <Alert status="success" variant="solid">
                     <AlertIcon />
                     Parabéns! Você alterou o usuário com sucesso!
