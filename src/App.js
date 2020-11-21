@@ -105,58 +105,6 @@ const LoginContainer = () => {
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Switch>
-        <Route path="/contracts">
-          <Contratos />
-        </Route>
-        <Route path="/contract-edit">
-          <EditContract />
-        </Route>
-        <Route path="/register">
-          <RegisterContract />
-        </Route>
-        <Route path="/winerys">
-          <ListWinerys />
-        </Route>
-        <Route path="/orders">
-          <ListOrders/>
-        </Route>
-        <Route path="/winery">
-          <Winery />
-        </Route>
-        <Route path="/winery-edit">
-          <EditWinery />
-        </Route>
-        <Route path="/user">
-          <Users />
-        </Route>
-        <Route path="/user-register">
-          <RegisterUser />
-        </Route>
-        <Route path="/user-edit">
-          <EditUser />
-        </Route>
-        <Route path="/system-register">
-          <RegisterSystem />
-        </Route>
-        <Route path="/systems">
-          <ListSystems />
-        </Route>
-        <Route path="/system-edit">
-          <EditSystem />
-        </Route>
-        <Route path="/sensor">
-          <ListSensors />
-        </Route>
-        <Route path="/sensor-register">
-          <RegisterSensor />
-        </Route>
-        <Route path="/sensor-edit">
-          <EditSensor />
-        </Route>
-      </Switch>
-
       <ThemeProvider>
         <div className="App">
           { isAuthenticated() ? (

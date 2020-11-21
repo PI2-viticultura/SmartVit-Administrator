@@ -27,7 +27,7 @@ function Winery(){
             name,
             address,
             // eslint-disable-next-line camelcase
-            contract_id: contractId 
+            contract_id: contract_id 
         },
         {
             "Content-Type": "application/json",
