@@ -12,20 +12,6 @@ function ListPartner() {
   const history = useHistory();
   let partners = [];
 
-  const getPartners = async () => {    
-    await apiAdmin.get("/partners",
-        {
-            "Content-Type": "application/json",
-            "X-Requested-With": "XMLHttpRequest"
-        }).then((res) => {
-          
-          partners = res.data;
-          setData(partners);
-          setFiltereData(partners);
-        }).catch((error) => {
-        });
-  };
-
   const search = (event) => {
     event.preventDefault();
     const { value } = event.target;
