@@ -13,7 +13,6 @@ import {
 } from "@chakra-ui/core";
 
 import apiAdmin from "../../services/api-admin";
-import retirarMask from "../../utils/masks";
 import "./style.css";
 
 

@@ -10,7 +10,6 @@ function ListPartner() {
   const [data, setData] = useState([]);
   const [filtereData, setFiltereData] = useState([]);
   const history = useHistory();
-  let partners = [];
 
   const search = (event) => {
     event.preventDefault();
@@ -29,7 +28,8 @@ function ListPartner() {
   };
 
   useEffect(() => {
-    const getPartnersx = async () => {    
+    let partners = [];
+    const getPartnersx = async () => {  
         await apiAdmin.get("/partners",
             {
                 "Content-Type": "application/json",
