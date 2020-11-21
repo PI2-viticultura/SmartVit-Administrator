@@ -31,7 +31,7 @@ function RegisterPartner() {
                    {value: "Agrônomo", name: "Agrônomo"}, 
                    {value: "Técnico Agrícola", name: "Técnico Agrícola"},
                    {value: "Engenheiro Florestal", name: "Engenheiro Florestal"}
-                  ]
+                  ];
 
     const makeRegister = async () => {
         await apiAdmin.post("/partner", {
@@ -59,7 +59,7 @@ function RegisterPartner() {
         history.push({
             pathname: "/partner"
         });
-    }
+    };
 
     return(
         <div className="main">
@@ -91,7 +91,7 @@ function RegisterPartner() {
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="address" isRequired>
                             <FormLabel htmlFor="address">Endereço</FormLabel>
-                            <Input id="address" placeholder="R. 12 de Outubro, Renato Gonçakes" onChange={(e) => { setEndereco(e.target.value) }} />
+                            <Input id="address" placeholder="R. 12 de Outubro, Renato Gonçakes" onChange={(e) => { setEndereco(e.target.value); }} />
                         </FormControl>
                         <FormControl className="field-telefone" isRequired>
                             <FormLabel htmlFor="telefone">Telefone</FormLabel>
@@ -116,7 +116,7 @@ function RegisterPartner() {
                 </div>
             </Box>
         </div>
-    )
+    );
 }
 
 export default RegisterPartner;
