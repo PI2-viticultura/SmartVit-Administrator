@@ -8,9 +8,9 @@ import * as RiIcons from "react-icons/ri";
 
 export const SidebarData = [
     {
-        title: " Home",
-        path: "/",
-        icon: <BiIcons.BiHomeAlt />,
+        title: " Contratos",
+        path: "/contracts",
+        icon: <HiIcons.HiDocumentReport />,
         cName: "nav-text"
     },
     {
@@ -29,12 +29,6 @@ export const SidebarData = [
         title: " Sensor",
         path: "/sensor",
         icon: <RiIcons.RiSensorLine />,
-        cName: "nav-text"
-    },
-    {
-        title: " Contratos",
-        path: "/contracts",
-        icon: <HiIcons.HiDocumentReport />,
         cName: "nav-text"
     },
     {

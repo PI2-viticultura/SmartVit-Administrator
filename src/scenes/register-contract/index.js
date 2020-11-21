@@ -4,12 +4,12 @@ import {
     Alert,
     AlertIcon,
     Box,
-    Button,
     FormControl,
     FormLabel,
     Grid,
     Heading,
     Input,
+    Select
 } from "@chakra-ui/core";
 
 import apiAdmin from "../../services/api-admin";
@@ -22,7 +22,7 @@ function RegisterContract() {
     const [cpf_cnpj, setCnpjCpf] = useState("");
     const [endereco, setEndereco] = useState("");
     const [telefone, setTelefone] = useState("");
-    const [status, setStatus] = useState("");
+    const [status, setStatus] = useState("ativo");
     const [dataInicio, setDataInicio] = useState("");
     const [dataFim, setDataFim] = useState("");
     const [vinicola, setVinicola] = useState("");
@@ -37,7 +37,6 @@ function RegisterContract() {
     const [cpfCnpj_field, setCpfCnpj_field] = useState("");
     const [endereco_field, setEndereco_field] = useState("");
     const [telefone_field, setTelefone_field] = useState("");
-    const [status_field, setStatus_field] = useState("");
     const [dataInicio_field, setDataInicio_field] = useState("");
     const [dataFim_field, setDataFim_field] = useState("");
     const [vinicola_field, setVinicola_field] = useState("");
@@ -153,14 +152,6 @@ function RegisterContract() {
     const handleValidationStatus = (event) => {
         event.preventDefault();
         const { value } = event.target;
-
-        if (value.trim() === "") {
-            setStatus_field(true);
-            setStatus(null);
-            return;
-        }
-
-        setStatus_field(false);
         setStatus(value);
     }
 
@@ -269,7 +260,10 @@ function RegisterContract() {
                     </Grid>
                     <FormControl isRequired>
                         <FormLabel htmlFor="status">Status</FormLabel>
-                        <Input isInvalid={status_field} id="status" placeholder="Status" onChange={(e) => { handleValidationStatus(e); }} />
+                        <Select id="status" onChange={(e) => { handleValidationStatus(e); }}>
+                            <option value="ativo">Ativo</option>
+                            <option value="inativo">Inativo</option>
+                        </Select>
                     </FormControl>
                     <Grid templateColumns="repeat(2, 1fr)">
                         <FormControl className="field-dataInicio" isRequired>
@@ -287,8 +281,8 @@ function RegisterContract() {
                     </FormControl>
                 </div>
                 <div className="button-box">
-                <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => pushToReturn()}>VOLTAR</Button>
-                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</Button>
+                    <button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => pushToReturn()}>VOLTAR</button>
+                    <button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeRegister()}>CADASTRAR</button>
                 </div>
             </Box>
         </div>

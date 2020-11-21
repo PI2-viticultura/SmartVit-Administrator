@@ -11,6 +11,10 @@
   text-align: center;
 }
 
+.logo_rel {
+  width: 20%;
+}
+
 .nao-atendido {
   color: red;
   font-size: 20px;

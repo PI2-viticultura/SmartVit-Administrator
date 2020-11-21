@@ -20,6 +20,7 @@ import ListSystems from "./scenes/system-list/index";
 import EditSystem from "./scenes/system-edit/index";
 import RegisterSensor from "./scenes/sensor-register/index";
 import ListSensors from "./scenes/sensor-list/index";
+import Listsupport from "./scenes/support-list/index";
 import EditSensor from "./scenes/sensor-edit/index";
 import Login from "./scenes/login/index";
 import Logout from "./scenes/logout/index";
@@ -82,6 +83,10 @@ const DefaultContainer = () => {
       <Route path="/sensor-edit">
         <Navbar />
         <EditSensor />
+      </Route>
+      <Route path="/support">
+        <Navbar />
+        <Listsupport />
       </Route>
       <Route path="/logout" component={Logout} />
     </div>

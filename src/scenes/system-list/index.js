@@ -25,7 +25,7 @@ function ListSystems() {
   };
 
   const getSystems = async () => {
-    await apiWinery.get("/winery",
+    await apiWinery.get("/system",
       {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
@@ -37,7 +37,7 @@ function ListSystems() {
   };
 
   const changeStatus = async (id) => {
-    await apiWinery.patch("/winery/" + id,
+    await apiWinery.patch("/system/" + id,
       {
         "Content-Type": "application/json",
         "X-Requested-With": "XMLHttpRequest"
@@ -62,7 +62,7 @@ function ListSystems() {
         </IconContext.Provider>
     },
     {
-      name: <Text fontSize="md"> Sistema</Text>,
+      name: "Nome",
       selector: "name",
       sortable: true,
     },

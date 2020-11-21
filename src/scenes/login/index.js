@@ -34,14 +34,14 @@ function Login() {
         }).then((result) => {
             const { access_token } = result.data;
             login(access_token);
-            history.push("/systems");
+            history.push("/orders");
             window.location.reload(true);
         }, (error) => {
             console.error(error);
         });
     };
     return (
-        <Flex align="center">
+        <Flex align="center" className="login-container">
             <Flex className="box-image" bg="green.50" size="100vh" align="center" justify="center"></Flex>
             <Flex className="box-login" bg="blue.50" size="100vh" align="center" justify="center">
                 <div className="logo">

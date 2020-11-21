@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import * as GoIcons from "react-icons/go";
-import {IconContext} from "react-icons";
-import { Box, Input, Text, Divider} from "@chakra-ui/core";
+import { Box, Input } from "@chakra-ui/core";
 import "./style.css";
 import apiAdmin from "../../services/api-admin";
 import DataTable from "react-data-table-component";
@@ -96,18 +94,18 @@ function Contratos() {
 
     return (
         <div className="main">
-            <Box className="box-contrato" bg="#FFFFFF" rounded="md" h="35.48125em">
+            <Box className="p-5" bg="#FFFFFF" rounded="md">
                 <div className="grid-header" gap={6}>
-                    <button className="button-new" size="md" w="40%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
-                    <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>
+                    <button className="button-new" size="md" w="30%" onClick={() => pushToRegister()}>NOVO CONTRATO</button>
+                    <Input className="input-new" placeholder="Pesquisar" w="65%" borderColor="#919FA7"/>                   
                 </div>
-            <DataTable
-            columns={columns}
-            data={data}
-            defaultSortField="Contratante"
-            pagination={true}
-            />
-            <Divider borderColor="#C4C4C4"/>
+
+                <DataTable
+                    columns={columns}
+                    data={data}
+                    defaultSortField="Contratante"
+                    pagination={true}
+                />
             </Box >
         </div >
     );

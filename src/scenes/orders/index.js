@@ -12,13 +12,14 @@ function ListOrders() {
 
   let orders = [];
 
-  const getOrders = async () => {
+  const getOrders = async () => {    
     await apiAdmin.get("/orders",
         {
             "Content-Type": "application/json",
             "X-Requested-With": "XMLHttpRequest"
         }).then((res) => {
-          orders = res.data.filter((element) => typeof element.description === "string");
+          
+          orders = res.data;
           setData(orders);
           setFiltereData(orders);
         }).catch((error) => {
@@ -42,8 +43,20 @@ function ListOrders() {
   };
 
   useEffect(() => {
-    getOrders();
-  });
+    const getOrderx = async () => {    
+        await apiAdmin.get("/orders",
+        {
+            "Content-Type": "application/json",
+            "X-Requested-With": "XMLHttpRequest"
+        }).then((res) => {
+          setData(res.data);
+          setFiltereData(res.data);
+        }).catch((error) => {
+        });
+    };
+
+    getOrderx();
+  }, []);
 
   const changeStatus = async (orderId) => {
     await apiAdmin.patch("/orders/" + orderId,
