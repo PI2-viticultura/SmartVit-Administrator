@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { FaTimes, FaCheck } from "react-icons/fa";
-import { Box, Input } from "@chakra-ui/core";
+import * as GoIcons from "react-icons/go";
+import {IconContext} from "react-icons";
+import { Box, Input, Text, Divider} from "@chakra-ui/core";
 import "./style.css";
 import apiAdmin from "../../services/api-admin";
 import DataTable from "react-data-table-component";
@@ -59,19 +61,33 @@ function Contratos() {
         });
     };
 
+    const pushToEdit = (id) => {
+      history.push({
+          pathname: "/winery-edit",
+          state: { isEdit: true}
+      });
+    };
+
     const columns = [
     {
-      name: "Contratante",
+      name: <Text fontSize="md"> Editar</Text>,
+      selector: "id",
+      cell: (row) => <IconContext.Provider value={{className: "react-icons"}}>
+      <GoIcons.GoPencil onClick={pushToEdit}/>
+      </IconContext.Provider>
+    },
+    {
+      name: <Text fontSize="md"> Contratante</Text>,
       sortable: true,
       selector: "contractor",
     },
     {
-      name: "Data",
+      name: <Text fontSize="md"> Data</Text>,
       sortable: true,
       selector: "initialDate",
     },
     {
-      name: "Cancelar Contrato?",
+      name: <Text fontSize="md"> Cancelar Contrato?</Text>,
       cell: (row) => row.status === 0 ? <button className="nao-atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaTimes/></button> : <button className="atendido" onClick={() => changeStatus(row._id["$oid"])}> <FaCheck/></button>,
       sortable: true,
       selector: "cancel",

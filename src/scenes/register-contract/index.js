@@ -146,7 +146,7 @@ function RegisterContract() {
         }
 
         setTelefone_field(false);
-        setTelefone(retirarMask(value));
+        setTelefone(value);
     }
 
     const handleValidationStatus = (event) => {

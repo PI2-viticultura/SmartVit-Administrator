@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_URL_USER;
+const baseUrl = "https://smartvit-user-dev.herokuapp.com/";
 
 
 const apiUser =  axios.create({

@@ -1,14 +1,16 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { isAuthenticated } from "./services/auth";
 import { ThemeProvider } from "@chakra-ui/core";
 
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Contratos from "./scenes/contract/index";
+import EditContract from "./scenes/contract-edit/index";
 import RegisterContract from "./scenes/register-contract/index";
 import ListWinerys from "./scenes/list-winery/index";
 import Winery from "./scenes/winery/index";
+import EditWinery from "./scenes/winery-edit/index";
 import ListOrders from "./scenes/orders/index";
 import Users from "./scenes/user-list/index";
 import RegisterUser from "./scenes/user-register/index";
@@ -122,6 +124,7 @@ function App() {
           )}
         </div>
       </ThemeProvider>
+
     </BrowserRouter>
   );
 }
