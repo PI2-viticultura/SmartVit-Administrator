@@ -22,6 +22,8 @@ import Listsupport from "./scenes/support-list/index";
 import EditSensor from "./scenes/sensor-edit/index";
 import Login from "./scenes/login/index";
 import Logout from "./scenes/logout/index";
+import ListPartner from "./scenes/partner/index";
+import RegisterPartner from "./scenes/register-partner/index";
 
 const DefaultContainer = () => {
   return (
@@ -34,6 +36,10 @@ const DefaultContainer = () => {
         <Navbar />
         <RegisterContract />
       </Route>
+      <Route path="/register-partner">
+        <Navbar />
+        <RegisterPartner />
+      </Route>
       <Route path="/winerys">
         <Navbar />
         <ListWinerys />
@@ -41,6 +47,10 @@ const DefaultContainer = () => {
       <Route path="/orders">
         <Navbar />
         <ListOrders />
+      </Route>
+      <Route path="/partner">
+        <Navbar />
+        <ListPartner />
       </Route>
       <Route path="/winery">
         <Navbar />
