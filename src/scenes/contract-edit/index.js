@@ -228,7 +228,7 @@ function EditContract() {
     };
 
     return (
-        <div className="main-event">
+        <div className="main">
             {success === "success" ?
                 <Alert status="success" variant="solid">
                     <AlertIcon />

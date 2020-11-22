@@ -34,6 +34,10 @@ const DefaultContainer = () => {
         <Navbar />
         <Contratos />
       </Route>
+      <Route path="/contract-edit">
+        <Navbar />
+        <EditContract />
+      </Route>
       <Route path="/register">
         <Navbar />
         <RegisterContract />
