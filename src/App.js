@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { isAuthenticated } from "./services/auth";
 import { ThemeProvider } from "@chakra-ui/core";
 
@@ -45,6 +45,10 @@ const DefaultContainer = () => {
       <Route path="/winerys">
         <Navbar />
         <ListWinerys />
+      </Route>
+      <Route path="/winery-edit">
+        <Navbar />
+        <EditWinery />
       </Route>
       <Route path="/orders">
         <Navbar />
