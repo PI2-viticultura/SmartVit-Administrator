@@ -289,7 +289,7 @@ function EditContract() {
 
                 </div>
                 <div className="button-box">
-                    <Button className="button-register" variantColor="primary" size="md" w="25%" onClick={() => makeEdit()}>Atualizar</Button>
+                    <button className="button-new" variantColor="primary" size="md" w="25%" onClick={() => makeEdit()}>Atualizar</button>
                 </div>
             </Box>
         </div >
