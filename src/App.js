@@ -6,9 +6,11 @@ import { ThemeProvider } from "@chakra-ui/core";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Contratos from "./scenes/contract/index";
+import EditContract from "./scenes/contract-edit/index";
 import RegisterContract from "./scenes/register-contract/index";
 import ListWinerys from "./scenes/list-winery/index";
 import Winery from "./scenes/winery/index";
+import EditWinery from "./scenes/winery-edit/index";
 import ListOrders from "./scenes/orders/index";
 import Users from "./scenes/user-list/index";
 import RegisterUser from "./scenes/user-register/index";
@@ -32,6 +34,10 @@ const DefaultContainer = () => {
         <Navbar />
         <Contratos />
       </Route>
+      <Route path="/contract-edit">
+        <Navbar />
+        <EditContract />
+      </Route>
       <Route path="/register">
         <Navbar />
         <RegisterContract />
@@ -43,6 +49,10 @@ const DefaultContainer = () => {
       <Route path="/winerys">
         <Navbar />
         <ListWinerys />
+      </Route>
+      <Route path="/winery-edit">
+        <Navbar />
+        <EditWinery />
       </Route>
       <Route path="/orders">
         <Navbar />
@@ -122,6 +132,7 @@ function App() {
           )}
         </div>
       </ThemeProvider>
+
     </BrowserRouter>
   );
 }

@@ -17,7 +17,7 @@ import "../../globals/globalStyle.css";
 function Winery(){
     const [name, setName] = useState("");
     const [address, setAddress] = useState("");
-    const [contractId, setContractId] = useState("");
+    const [contract_id, setContractId] = useState("");
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [contracts, setContracts] = useState([]);
@@ -27,7 +27,7 @@ function Winery(){
             name,
             address,
             // eslint-disable-next-line camelcase
-            contract_id: contractId 
+            contract_id 
         },
         {
             "Content-Type": "application/json",
